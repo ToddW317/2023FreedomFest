@@ -1,0 +1,2647 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+@media only screen and (min-width: 0rem) {
+    :root {
+      /* remove this whole :root and put in your global css file that's shared on all pages, then just remove this section from all other Stitches you add later, only need this once in your global stylesheet */
+      --primary: #bf0a30;
+      --primaryLight: #002868;
+      --secondary: #bf0a30;
+      --secondaryLight: #002868;
+      --headerColor: #000000;
+      --bodyTextColor: #4E4B66;
+      --bodyTextColorWhite: #FAFBFC;
+      /* 13px - 16px */
+      --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
+      /* 31px - 49px */
+      --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
+      --bodyFontSize: 1rem;
+      /* 60px - 100px top and bottom */
+      --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
+    }
+
+/*-- -------------------------- -->
+<---     Mobile Navigation      -->
+<--- -------------------------- -*/
+  
+  /* Mobile - 1023px */
+  @media only screen and (max-width: 63.9375rem) {
+    body.cs-open {
+      overflow: hidden;
+    }
+    body.scroll #cs-navigation:before {
+      height: 100%;
+    }
+    #cs-navigation {
+      /* remove the font family so the Stitch inherits the fonts from your global stylesheet */
+      font-family: 'Roboto', 'Arial', sans-serif;
+      width: 100%;
+      padding: 1.25rem 1rem;
+      /* prevents padding from affecting height and width */
+      box-sizing: border-box;
+      background: #002868;
+      -webkit-backdrop-filter: blur(27px);
+      backdrop-filter: blur(27px);
+      position: fixed;
+      z-index: 10000;
+      transition: background-color 0.3s;
+    }
+    #cs-navigation:before {
+      content: '';
+      width: 100%;
+      height: 0%;
+      background: #002868;
+      opacity: 1;
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      transition: height .3s;
+    }
+    #cs-navigation:after {
+      content: '';
+      width: 100%;
+      height: 0vh;
+      background: #002868;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      position: absolute;
+      display: block;
+      top: 0%;
+      right: 0;
+      z-index: -1100;
+      opacity: 0;
+      transition: height .5s, opacity .5s;
+    }
+    #cs-navigation.cs-active {
+      background-color: #1a1a1a;
+    }
+    #cs-navigation.cs-active:after {
+      height: 150vh;
+      opacity: 1;
+    }
+    #cs-navigation.cs-active .cs-ul-wrapper {
+      opacity: 1;
+      transform: scaleY(1);
+      transition-delay: .15s;
+    }
+    #cs-navigation.cs-active .cs-li {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    #cs-navigation .cs-container {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    #cs-navigation .cs-logo {
+      width: auto;
+      /* 56px - 80px */
+      height: clamp(3.5rem, 5vw, 5rem);
+      margin: 0 auto 0 0;
+      padding: 0;
+      /* prevents padding from affecting height and width */
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+    #cs-navigation .cs-logo img {
+      width: 100%;
+      height: 100%;
+      /* ensures the image never overflows the container. It stays contained within it's width and height and expands to fill it then stops once it reaches an edge */
+      object-fit: contain;
+    }
+    #cs-navigation .cs-toggle {
+      width: 3.5rem;
+      height: 3.5rem;
+      margin: 0 0 0 auto;
+      background-color: var(--primary);
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform .6s;
+      position: relative;
+      z-index: 10;
+    }
+    #cs-navigation .cs-toggle.cs-active {
+      transform: rotate(180deg);
+    }
+    #cs-navigation .cs-active .cs-line1 {
+      top: 50%;
+      transform: translate(-50%, -50%) rotate(225deg);
+    }
+    #cs-navigation .cs-active .cs-line2 {
+      top: 50%;
+      transform-origin: center;
+      transform: translate(-50%, -50%) translateY(0) rotate(-225deg);
+    }
+    #cs-navigation .cs-active .cs-line3 {
+      bottom: 100%;
+      opacity: 0;
+    }
+    #cs-navigation .cs-box {
+      /* 24px - 28px */
+      width: clamp(1.5rem, 2vw, 1.75rem);
+      height: 1rem;
+      position: relative;
+    }
+    #cs-navigation .cs-line {
+      width: 100%;
+      height: 2px;
+      border-radius: 2px;
+      background-color: #FAFBFC;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    #cs-navigation .cs-line1 {
+      top: 0;
+      transform-origin: center;
+      transition: transform .5s, top .3S, left .3S;
+      animation-duration: .7s;
+      animation-timing-function: ease;
+      animation-fill-mode: forwards;
+      animation-direction: normal;
+    }
+    #cs-navigation .cs-line2 {
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      transition: top .3s, left .3s, transform .5s;
+      animation-duration: .7s;
+      animation-timing-function: ease;
+      animation-fill-mode: forwards;
+      animation-direction: normal;
+    }
+    #cs-navigation .cs-line3 {
+      bottom: 0;
+      transition: bottom .3s, opacity .3s;
+    }
+    #cs-navigation .cs-ul-wrapper {
+      width: 100%;
+      height: auto;
+      padding-bottom: 2.4em;
+      opacity: 0;
+      background-color: #fff;
+      box-shadow: inset rgba(0, 0, 0, 0.2) 0px 8px 24px;
+      overflow: hidden;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: -1;
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform .4s, opacity .3s;
+    }
+    #cs-navigation .cs-ul {
+      margin: 0;
+      padding: 3rem 0 0 0;
+      width: 100%;
+      height: auto;
+      max-height: 65vh;
+      overflow: scroll;
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+    }
+    #cs-navigation .cs-li {
+      width: 100%;
+      text-align: center;
+      list-style: none;
+      margin-right: 0;
+      /* transition from these values */
+      transform: translateY(-4.375rem);
+      opacity: 0;
+      transition: transform .6s, opacity .9s;
+    }
+    #cs-navigation .cs-li:nth-of-type(1) {
+      transition-delay: .05s;
+    }
+    #cs-navigation .cs-li:nth-of-type(2) {
+      transition-delay: .1s;
+    }
+    #cs-navigation .cs-li:nth-of-type(3) {
+      transition-delay: .15s;
+    }
+    #cs-navigation .cs-li:nth-of-type(4) {
+      transition-delay: .2s;
+    }
+    #cs-navigation .cs-li:nth-of-type(5) {
+      transition-delay: .25s;
+    }
+    #cs-navigation .cs-li:nth-of-type(6) {
+      transition-delay: .3s;
+    }
+    #cs-navigation .cs-li:nth-of-type(7) {
+      transition-delay: .35s;
+    }
+    #cs-navigation .cs-li:nth-of-type(8) {
+      transition-delay: .4s;
+    }
+    #cs-navigation .cs-li:nth-of-type(9) {
+      transition-delay: .45s;
+    }
+    #cs-navigation .cs-li:nth-of-type(10) {
+      transition-delay: .5s;
+    }
+    #cs-navigation .cs-li:nth-of-type(11) {
+      transition-delay: .55s;
+    }
+    #cs-navigation .cs-li:nth-of-type(12) {
+      transition-delay: .6s;
+    }
+    #cs-navigation .cs-li:nth-of-type(13) {
+      transition-delay: .65s;
+    }
+    #cs-navigation .cs-li-link {
+      /* 16px - 24px */
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      line-height: 1.2em;
+      text-transform: uppercase;
+      font-weight: bold;
+      text-decoration: none;
+      margin: 0;
+      color: var(--headerColor);
+      display: inline-block;
+      position: relative;
+    }
+    #cs-navigation .cs-li-link.cs-active {
+      color: var(--primary);
+    }
+    #cs-navigation .cs-li-link:hover {
+      color: var(--primary);
+    }
+    #cs-navigation .cs-button-solid {
+      display: none;
+    }
+  }
+  
+  /*-- -------------------------- -->
+  <---     Desktop Navigation     -->
+  <--- -------------------------- -*/
+  
+  /* Small Desktop - 1024px */
+  @media only screen and (min-width: 64rem) {
+    body.scroll {
+      /* when the scroll class is on the body, run these styles */
+    }
+    body.scroll #cs-navigation:before {
+      height: 100%;
+    }
+    #cs-navigation {
+      /* remove the font family so the Stitch inherits the fonts from your global stylesheet */
+      font-family: 'Roboto', 'Arial', sans-serif;
+      width: 100%;
+      padding: 0 1rem;
+      /* prevents padding from affecting height and width */
+      box-sizing: border-box;
+      background: #bf0a30;
+      -webkit-backdrop-filter: blur(27px);
+      backdrop-filter: blur(27px);
+      position: fixed;
+      z-index: 10000;
+    }
+    #cs-navigation:before {
+      /* on scroll background */
+      content: '';
+      width: 100%;
+      height: 0%;
+      background: #bf0a30;
+      opacity: 1;
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      transition: height .3s;
+      opacity: .3;
+    }
+    #cs-navigation .cs-container {
+      width: 100%;
+      /* same height as the cs-ul-wrapper */
+      height: 6.3125rem;
+      max-width: 80rem;
+      margin: auto;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 1.5rem;
+      position: relative;
+    }
+    #cs-navigation .cs-toggle {
+      display: none;
+    }
+    #cs-navigation .cs-logo {
+      width: auto;
+      height: 8rem;
+      /* margin-right auto pushes everything away from it to the right */
+      margin: 0 auto 0 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+    }
+    #cs-navigation .cs-logo img {
+      width: 100%;
+      height: 100%;
+      /* ensures the image never overflows the container. It stays contained within it's width and height and expands to fill it then stops once it reaches an edge */
+      object-fit: contain;
+    }
+    #cs-navigation .cs-ul-wrapper {
+      /* absolutely positioned to be dead center */
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    #cs-navigation .cs-ul {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    #cs-navigation .cs-li {
+      list-style: none;
+      padding: 2.5rem 0;
+      /* prevent flexbox from squishing it */
+      flex: none;
+    }
+    #cs-navigation .cs-li-link {
+      /* 14px - 16px */
+      font-size: clamp(0.875rem, 0.6vw, 1rem);
+      line-height: 1.5em;
+      font-weight: 700;
+      text-decoration: none;
+      text-transform: uppercase;
+      margin: 0;
+      padding: 0 1rem;
+      color: var(--bodyTextColorWhite);
+      display: block;
+      position: relative;
+      z-index: 1;
+      transition: color .3s;
+    }
+    #cs-navigation .cs-li-link:before {
+      /* on scroll background */
+      content: '';
+      width: 100%;
+      height: 2.5rem;
+      background: var(--primaryLight);
+      opacity: 0;
+      position: absolute;
+      display: block;
+      top: 50%;
+      left: 50%;
+      z-index: -1;
+      transform: translate(-50%, -50%) scale(1.2);
+      transition: opacity .3s, transform .3s;
+    }
+    #cs-navigation .cs-li-link:hover:before {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    #cs-navigation .cs-li-link.cs-active:before {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    #cs-navigation .cs-button-solid {
+      font-size: 1rem;
+      /* 46px - 56px */
+      line-height: clamp(2.875em, 5.5vw, 3.5em);
+      text-decoration: none;
+      font-weight: 700;
+      text-align: center;
+      margin: 0;
+      color: #fff;
+      min-width: 9.375rem;
+      padding: 0 2rem;
+      background-color: transparent;
+      border: 1px solid var(--secondaryLight);
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+      /* prevents padding from adding to the width */
+      box-sizing: border-box;
+    }
+    #cs-navigation .cs-button-solid:before {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 0%;
+      background: var(--primaryLight);
+      opacity: 1;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      transition: width .3s;
+    }
+    #cs-navigation .cs-button-solid:hover:before {
+      width: 100%;
+    }
+  }
+                                  
+
+/*-- -------------------------- -->
+<---           Hero             -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+    #hero-492 {
+      /* remove the font family so the Stitch inherits the fonts from your global stylesheet */
+      font-family: 'Roboto', 'Arial', sans-serif;
+      /* Centers button */
+      text-align: left;
+      /* 200px - 300px - leaving extra space for the navigation */
+      padding: clamp(12.5rem, 25.95vw, 18.75em) 1rem;
+      padding-bottom: 12.5rem;
+      /* prevents the topper line from causing an overflow */
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+    #hero-492 .cs-background {
+      width: 100%;
+      height: 100%;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -2;
+    }
+    #hero-492 .cs-background:before {
+      /* Overlay */
+      content: '';
+      width: 100%;
+      height: 100%;
+      background: #001F3F;
+      opacity: .7;
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      /* prevents the cursor from interacting with it */
+      pointer-events: none;
+    }
+    #hero-492 .cs-background img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+    #hero-492 .cs-container {
+      width: 100%;
+      max-width: 80rem;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: center;
+      /* changes at tablet */
+      gap: 3rem;
+    }
+    #hero-492 .cs-content {
+      width: 100%;
+      max-width: 39.375rem;
+    }
+    #hero-492 .cs-topper {
+      /* 16px - 20px */
+      font-size: clamp(1rem, 1.5vw, 1.25rem);
+      line-height: 1.2em;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      padding-left: 3.75rem;
+      color: #fff;
+      display: block;
+      position: relative;
+    }
+    #hero-492 .cs-topper:before {
+      content: '';
+      /* make it really long so it always goes off screen */
+      width: 62.5rem;
+      height: 2px;
+      background: var(--primary);
+      opacity: 1;
+      position: absolute;
+      display: block;
+      top: 50%;
+      transform: translateY(-50%) translateX(2.1875rem);
+      right: 100%;
+    }
+    #hero-492 .cs-title {
+      /* 39px - 61px */
+      font-size: clamp(2.4375rem, 6.4vw, 3.8125rem);
+      font-weight: 700;
+      line-height: 1.2em;
+      text-align: left;
+      max-width: 51.8125rem;
+      /* 16px - 24px */
+      margin: 0 auto clamp(1rem, 4vw, 1.5rem) 0;
+      color: #fff;
+      position: relative;
+    }
+    #hero-492 .cs-text {
+      /* 16px - 20px */
+      font-size: clamp(1rem, 1.95vw, 1.25rem);
+      line-height: 1.5em;
+      text-align: left;
+      width: 100%;
+      /* 464px - 622px */
+      max-width: clamp(29rem, 60vw, 38.785rem);
+      margin: 0 auto 0 0;
+      margin-bottom: 2.25rem;
+      color: #fff;
+    }
+    #hero-492 .cs-button-solid {
+      font-size: 1rem;
+      line-height: 3.5rem;
+      text-decoration: none;
+      font-weight: 700;
+      margin: auto;
+      color: var(--headerColor);
+      padding: 0 1.5rem;
+      background-color: var(--primary);
+      border-radius: 0.25rem;
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+      transition: color.3s;
+    }
+    #hero-492 .cs-button-solid:before {
+      content: '';
+      position: absolute;
+      display: block;
+      height: 100%;
+      width: 0%;
+      background: #000;
+      opacity: 1;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      border-radius: 0.25rem;
+      transition: width .3s;
+    }
+    #hero-492 .cs-button-solid:hover {
+      color: #fff;
+    }
+    #hero-492 .cs-button-solid:hover:before {
+      width: 100%;
+    }
+  }
+
+  /*-- -------------------------- -->
+<---          Services          -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #services-965 {
+      /* remove the font family so the Stitch inherits the fonts from your global stylesheet */
+      font-family: 'Roboto', 'Arial', sans-serif;
+      padding: var(--sectionPadding);
+      background: #001F3F;
+      background-size: auto;
+      background-position: center;
+      background-repeat: repeat;
+      background-color: #FFF;
+      position: relative;
+      z-index: 1;
+    }
+    #services-965 .cs-container {
+      width: 100%;
+      /* changes to 1280px at tablet */
+      max-width: 34.375rem;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* 48px - 64px */
+      gap: clamp(3rem, 6vw, 4rem);
+    }
+    #services-965 .cs-content {
+      /* set text align to left if content needs to be left aligned */
+      text-align: center;
+      width: 100%;
+      max-width: 50rem;
+      display: flex;
+      flex-direction: column;
+      /* centers content horizontally, set to flex-start to left align */
+      align-items: center;
+    }
+    #services-965 .cs-topper {
+      font-size: var(--topperFontSize);
+      line-height: 1.2em;
+      text-transform: uppercase;
+      text-align: inherit;
+      letter-spacing: .1em;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+    #services-965 .cs-title {
+      font-size: var(--headerFontSize);
+      font-weight: 900;
+      line-height: 1.2em;
+      text-align: inherit;
+      max-width: 43.75rem;
+      margin: 0 0 1rem 0;
+      color: var(--headerColor);
+      position: relative;
+    }
+    #services-965 .cs-text {
+      font-size: var(--bodyFontSize);
+      line-height: 1.5em;
+      text-align: inherit;
+      width: 100%;
+      max-width: 40.625rem;
+      margin: 0;
+      color: var(--bodyTextColor);
+    }
+    #services-965 .cs-title,
+    #services-965 .cs-text {
+      /* Override.  cs-topper cs-title and first cs-text should be removed and put into your global css sheet so it can control every instance of them on your site and is consistent. This selector is a section specific override that stays inside this stitch */
+      max-width: 100%;
+      color: var(--bodyTextColorWhite);
+    }
+    #services-965 .cs-text {
+      opacity: .8;
+    }
+    #services-965 .cs-card-group {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.875rem;
+    }
+    #services-965 .cs-item {
+      width: 100%;
+      text-align: left;
+      list-style: none;
+      /* margin top value to match the negative margin value of the .cs-icon-wrapper */
+      margin: 2.75rem 0 0 0;
+      /* 24px - 64px bottom */
+      /* 24px - 40px left & right */
+      padding: 0 clamp(1.5rem, 4vw, 2.5rem) clamp(1.5rem, 6vw, 4rem);
+      background-color: #F7F3EE;
+      /* prevents padding from affecting height and width */
+      box-sizing: border-box;
+      grid-column: span 12;
+      grid-row: span 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+    #services-965 .cs-item:hover .cs-h3 {
+      color: var(--bodyTextColorWhite);
+    }
+    #services-965 .cs-item:hover .cs-item-text {
+      color: var(--bodyTextColorWhite);
+      opacity: .9;
+    }
+    #services-965 .cs-item:hover .cs-background {
+      opacity: 1;
+    }
+    #services-965 .cs-icon-wrapper {
+      width: 5.5rem;
+      height: 5.5rem;
+      margin: -2.75rem auto 2rem 0;
+      background-color: var(--secondaryLight);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      left: calc(clamp(1.5rem, 4vw, 2.5rem)*-1);
+    }
+    #services-965 .cs-icon {
+      width: 2.5rem;
+      height: auto;
+    }
+    #services-965 .cs-h3 {
+      /* 20px - 25px */
+      font-size: clamp(1.25rem, 2.5vw, 1.5625rem);
+      line-height: 1.2em;
+      font-weight: bold;
+      text-align: inherit;
+      margin: 0 0 0.75rem 0;
+      color: var(--headerColor);
+    }
+    #services-965 .cs-item-text {
+      /* 14px - 16px */
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+      line-height: 1.5em;
+      max-width: 18.75rem;
+      margin: 0 0 2rem 0;
+      padding: 0;
+      color: var(--bodyTextColor);
+    }
+    #services-965 .cs-link {
+      text-decoration: none;
+      font-size: 0.8rem;
+      line-height: 1.2em;
+      font-weight: bold;
+      margin: 0;
+      padding: 0;
+      color: var(--primary);
+      position: relative;
+      transition: color .3s;
+    }
+    #services-965 .cs-link:hover {
+      color: #fff;
+    }
+    #services-965 .cs-link:before {
+      /* underline */
+      content: '';
+      width: 100%;
+      height: 1px;
+      background: currentColor;
+      opacity: 1;
+      position: absolute;
+      display: block;
+      bottom: 0rem;
+      left: 0;
+    }
+    #services-965 .cs-background {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      transition: opacity .3s;
+    }
+    #services-965 .cs-background:before {
+      /* background color overlay */
+      content: '';
+      position: absolute;
+      display: block;
+      height: 100%;
+      width: 100%;
+      background: #1A1A1A;
+      opacity: .84;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+    #services-965 .cs-background img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      /* Makes img tag act as a background image */
+      object-fit: cover;
+    }
+    #services-965 .cs-waves {
+      width: 100%;
+      height: 13.875rem;
+      background-color: var(--primary);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+    }
+    #services-965 .cs-waves img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+  /* Tablet - 768px */
+  @media only screen and (min-width: 48rem) {
+    #services-965 .cs-container {
+      max-width: 80rem;
+    }
+    #services-965 .cs-item {
+      grid-column: span 6;
+    }
+  }
+  /* Small Desktop - 1024px */
+  @media only screen and (min-width: 64rem) {
+    #services-965 .cs-item {
+      grid-column: span 4;
+    }
+  }
+  
+  /*-- -------------------------- -->
+<---          Services          -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #services-18 {
+      /* remove the font family so the Stitch inherits the fonts from your global stylesheet */
+      font-family: 'Roboto', 'Arial', sans-serif;
+      padding: var(--sectionPadding);
+    }
+    #services-18 .cs-container {
+      width: 100%;
+      max-width: 80rem;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* 48px - 64px */
+      gap: clamp(3rem, 6vw, 4rem);
+    }
+    #services-18 .cs-card-group {
+      width: 100%;
+      /* changes to 1280px at desktop */
+      max-width: 56.25rem;
+      margin: 0;
+      padding: 2.5rem 0 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      border-top: 1px solid var(--primary);
+      border-bottom: 1px solid var(--primary);
+    }
+    #services-18 .cs-item {
+      text-align: left;
+      list-style: none;
+      width: 100%;
+      max-width: 20rem;
+      margin: 0;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+    #services-18 .cs-picture {
+      margin-right: 1.25rem;
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      /* 60px - 68px */
+      width: clamp(8rem, 16vw, 24.5rem);
+      height: clamp(8rem, 16vw, 24.5rem);
+      /* border-radius: 50%;
+      border: 2px solid var(--primary); */
+      /* prevents border from affecting height and width */
+      box-sizing: border-box;
+      /* prevents flexbox from squishing it */
+      flex: none;
+    }
+    #services-18 .cs-icon {
+      width: 12.5rem;
+      height: auto;
+      display: block;
+    }
+    #services-18 .cs-h3 {
+      font-size: 1.25rem;
+      line-height: 1.5em;
+      margin: 0;
+      margin-bottom: 1rem;
+      color: var(--headerColor);
+    }
+    #services-18 .cs-item-text {
+      /* 14px - 16px */
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+      line-height: 1.5em;
+      margin: 0;
+      color: var(--bodyTextColor);
+    }
+    #services-18 .cs-button-solid {
+      font-size: 1rem;
+      /* 46px - 56px */
+      line-height: clamp(2.875rem, 5.5vw, 3.5rem);
+      text-decoration: none;
+      font-weight: 700;
+      text-align: center;
+      margin: 0;
+      color: #fff;
+      min-width: 9.375rem;
+      padding: 0 1.5rem;
+      background-color: var(--primary);
+      border-radius: 0.25rem;
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+      /* prevents padding from adding to the width */
+      box-sizing: border-box;
+    }
+    #services-18 .cs-button-solid:before {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 0%;
+      background: #002868;
+      opacity: 1;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      border-radius: 0.25rem;
+      transition: width .3s;
+    }
+    #services-18 .cs-button-solid:hover:before {
+      width: 100%;
+    }
+    #services-18 .cs-button-solid {
+      /* button override */
+      margin-top: -4.5rem;
+      /* creates illusion of 2 separate lines */
+      outline: 1.25rem solid #ffffff;
+    }
+  }
+  /* Tablet - 600px */
+  @media only screen and (min-width: 37.5rem) {
+    #services-18 .cs-card-group {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      column-gap: 2.5rem;
+      row-gap: 2.5rem;
+    }
+    #services-18 .cs-item {
+      margin: 0;
+      width: 46%;
+    }
+    #services-18 .cs-button-solid {
+      margin-top: calc(clamp(4.5rem, 9vw, 5.625rem)*-1);
+    }
+  }
+  /* Desktop - 1300px */
+  @media only screen and (min-width: 81.25rem) {
+    #services-18 .cs-card-group {
+      max-width: 80rem;
+    }
+  }
+
+  /*-- -------------------------- -->
+<---          Gallery           -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #gallery-974 {
+      /* remove the font family so the Stitch inherits the fonts from your global stylesheet */
+      font-family: 'Roboto', 'Arial', sans-serif;
+      padding: var(--sectionPadding);
+    }
+    #gallery-974 .cs-container {
+      width: 100%;
+      /* changes to 1280px at desktop */
+      max-width: 34.375rem;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* 48px - 64px */
+      gap: clamp(3rem, 6vw, 4rem);
+      position: relative;
+    }
+    #gallery-974 .cs-content {
+      /* set text align to left if content needs to be left aligned */
+      text-align: center;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      /* centers content horizontally, set to flex-start to left align */
+      align-items: center;
+    }
+    #gallery-974 .cs-topper {
+      font-size: var(--topperFontSize);
+      line-height: 1.2em;
+      text-transform: uppercase;
+      text-align: inherit;
+      letter-spacing: .1em;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+    #gallery-974 .cs-title {
+      font-size: var(--headerFontSize);
+      font-weight: 900;
+      line-height: 1.2em;
+      text-align: inherit;
+      max-width: 43.75rem;
+      margin: 0 0 1rem 0;
+      color: var(--headerColor);
+      position: relative;
+    }
+    #gallery-974 .cs-title {
+      /* Override.  cs-topper cs-title and first cs-text should be removed and put into your global css sheet so it can control every instance of them on your site and is consistent. This selector is a section specific override that stays inside this stitch */
+      margin: 0 0 1.5rem 0;
+    }
+    #gallery-974 .cs-button-group {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      row-gap: 0.5rem;
+      column-gap: 2rem;
+    }
+    #gallery-974 .cs-button {
+      font-size: 1rem;
+      line-height: 1.5em;
+      color: var(--bodyTextColor);
+      background-color: transparent;
+      border: none;
+      transition: color .3s;
+    }
+    #gallery-974 .cs-button:hover {
+      color: var(--primary);
+      cursor: pointer;
+    }
+    #gallery-974 .cs-button.cs-active {
+      color: var(--primary);
+    }
+    #gallery-974 .cs-gallery {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      opacity: 1;
+      visibility: visible;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      transition: transform .7s, opacity .3s, visibility .5s, top .3s, left .3s;
+      /* makes the transfrom scaling orgin the top left corner, dictates the direction by which the scale transforms animate towards */
+      transform-origin: left top;
+    }
+    #gallery-974 .cs-gallery.cs-hidden {
+      /* by using visibility:hidden instead of display:none, we can see the animations from the opacity and transforms, display:none won't render animations. */
+      visibility: hidden;
+      /* prevents the mouse from interacting with it */
+      pointer-events: none;
+      /* hidden galleries have a 0 opacity, and we animate the opacity to 1 when they become active */
+      opacity: 0;
+      /* this top and left value help control the animation, by setting it to position absolute and left 0, the gallery won't fly off screen to the left, it will stop its position to be at the left edge of the .cs-container (left: 0). Same for the bottom:0 value, the gallery won't go past that posiiton when it animates */
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      /* prevents the hidden galleries from overflowing the section, and makes a nice animations to transition to and from */
+      transform: scaleY(0) scaleX(0);
+    }
+    #gallery-974 .cs-gallery.cs-hidden .cs-image {
+      /* when gallery is hidden, add these styles to the cs-image to animate from when cs-hidden is removed from the .cs-gallery */
+      transform: translateY(2.1875rem);
+      opacity: 0;
+    }
+    #gallery-974 .cs-image {
+      width: 50%;
+      aspect-ratio: 1;
+      /* clips the image corners */
+      overflow: hidden;
+      display: block;
+      position: relative;
+      /* when .cs-hidden is removed from the .cs-gallery, reset these values and animate between their hidden styles */
+      transform: translateY(0rem);
+      opacity: 1;
+      transition: opacity .6s, transform .6s;
+    }
+    #gallery-974 .cs-image:nth-of-type(1) {
+      /* the transition delays change at desktop */
+      /* these delays stagger the reveal of each image so they all go one after the other and not all at once */
+      transition-delay: .15s;
+    }
+    #gallery-974 .cs-image:nth-of-type(2) {
+      transition-delay: .3s;
+    }
+    #gallery-974 .cs-image:nth-of-type(3) {
+      transition-delay: .45s;
+    }
+    #gallery-974 .cs-image:nth-of-type(4) {
+      transition-delay: .6s;
+    }
+    #gallery-974 .cs-image:nth-of-type(5) {
+      transition-delay: .75s;
+    }
+    #gallery-974 .cs-image:nth-of-type(6) {
+      transition-delay: .9s;
+    }
+    #gallery-974 .cs-image:nth-of-type(7) {
+      transition-delay: 1.05s;
+    }
+    #gallery-974 .cs-image:nth-of-type(8) {
+      transition-delay: 1.20s;
+    }
+    #gallery-974 .cs-image img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      /* makes it act like a background image */
+      object-fit: cover;
+    }
+  }
+  /* Small Desktop - 1024px */
+  @media only screen and (min-width: 64rem) {
+    #gallery-974 .cs-container {
+      max-width: 80rem;
+    }
+    #gallery-974 .cs-image {
+      width: 25%;
+      height: 25rem;
+    }
+    #gallery-974 .cs-image:nth-of-type(1) {
+      /* these delays stagger the reveal of each image so they all go one after the other and not all at once */
+      transition-delay: .15s;
+    }
+    #gallery-974 .cs-image:nth-of-type(2) {
+      transition-delay: .3s;
+    }
+    #gallery-974 .cs-image:nth-of-type(3) {
+      transition-delay: .45s;
+    }
+    #gallery-974 .cs-image:nth-of-type(4) {
+      transition-delay: .6s;
+    }
+    #gallery-974 .cs-image:nth-of-type(5) {
+      transition-delay: .15s;
+    }
+    #gallery-974 .cs-image:nth-of-type(6) {
+      transition-delay: .3s;
+    }
+    #gallery-974 .cs-image:nth-of-type(7) {
+      transition-delay: .45s;
+    }
+    #gallery-974 .cs-image:nth-of-type(8) {
+      transition-delay: .6s;
+    }
+  }
+
+  /*-- -------------------------- -->
+<---            Events             -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #faq-352 {
+      /* remove the font family so the Stitch inherits the fonts from your global stylesheet */
+      font-family: 'Roboto', 'Arial', sans-serif;
+      padding: var(--sectionPadding);
+      background: #F7F7F7;
+    }
+    #faq-352 .cs-container {
+      width: 100%;
+      /* changes to 1280px at desktop */
+      max-width: 34.375rem;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      /* 40px - 48px */
+      gap: clamp(2.5rem, 5vw, 3rem);
+    }
+    #faq-352 .cs-content {
+      text-align: left;
+      max-width: 32.625rem;
+    }
+    #faq-352 .cs-topper {
+      font-size: var(--topperFontSize);
+      line-height: 1.2em;
+      text-transform: uppercase;
+      text-align: inherit;
+      letter-spacing: .1em;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+    #faq-352 .cs-title {
+      font-size: var(--headerFontSize);
+      font-weight: 900;
+      line-height: 1.2em;
+      text-align: inherit;
+      max-width: 43.75rem;
+      margin: 0 0 1rem 0;
+      color: var(--headerColor);
+      position: relative;
+    }
+    #faq-352 .cs-title {
+      /* cs-title override.  cs-topper cs-title and first cs-text should be removed and put into your global css sheet so it can control every instance of them on your site and is consistent. This second cs-text is a section specific override that stays inside this stitch */
+      /* 24px - 48px */
+      margin: 0 auto clamp(1.5rem, 4vw, 3rem);
+    }
+    #faq-352 .cs-faq-group {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    #faq-352 .cs-faq-item {
+      list-style: none;
+      width: 100%;
+      border-bottom: 1px solid #E8E8E8;
+      transition: border-bottom 0.3s;
+    }
+    #faq-352 .cs-faq-item.active {
+      border-color: var(--primaryLight);
+    }
+    #faq-352 .cs-faq-item.active .cs-button:before {
+      background-color: var(--primaryLight);
+      transform: rotate(315deg);
+    }
+    #faq-352 .cs-faq-item.active .cs-button:after {
+      background-color: var(--primaryLight);
+      transform: rotate(-315deg);
+    }
+    #faq-352 .cs-faq-item.active .cs-item-p {
+      height: auto;
+      /* 20px - 24px bottom */
+      /* 16px - 24px left & right */
+      padding: 0 clamp(1rem, 2vw, 1.5rem) clamp(1.25rem, 1.3vw, 1.5rem);
+      opacity: 1;
+    }
+    #faq-352 .cs-button {
+      font-size: 1rem;
+      line-height: 1.2em;
+      text-align: left;
+      font-weight: bold;
+      /* 16px - 20px */
+      padding: clamp(1rem, 1.3vw, 1.25rem);
+      border: none;
+      background: transparent;
+      color: var(--headerColor);
+      display: block;
+      width: 100%;
+      position: relative;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    #faq-352 .cs-button:hover {
+      cursor: pointer;
+    }
+    #faq-352 .cs-button:before {
+      /* left line */
+      content: '';
+      width: 0.5rem;
+      height: 0.125rem;
+      background-color: var(--headerColor);
+      opacity: 1;
+      border-radius: 50%;
+      position: absolute;
+      display: block;
+      top: 45%;
+      right: 1.5rem;
+      transform: rotate(45deg);
+      /* animate the transform from the left side of the x axis, and the center of the y */
+      transform-origin: left center;
+      transition: transform .5s;
+    }
+    #faq-352 .cs-button:after {
+      /* right line */
+      content: '';
+      width: 0.5rem;
+      height: 0.125rem;
+      background-color: var(--headerColor);
+      opacity: 1;
+      border-radius: 50%;
+      position: absolute;
+      display: block;
+      top: 45%;
+      right: 1.3125rem;
+      transform: rotate(-45deg);
+      /* animate the transform from the right side of the x axis, and the center of the y */
+      transform-origin: right center;
+      transition: transform .5s;
+    }
+    #faq-352 .cs-button-text {
+      width: 80%;
+      display: block;
+    }
+    #faq-352 .cs-item-p {
+      /* 14px - 16px */
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+      line-height: 1.5em;
+      width: 90%;
+      height: 0;
+      margin: 0;
+      /* 16px - 24px */
+      padding: 0 clamp(1rem, 2vw, 1.5rem);
+      opacity: 0;
+      color: var(--bodyTextColor);
+      /* clips the text so it doesn't show up */
+      overflow: hidden;
+      transition: opacity 0.3s, padding-bottom 0.3s;
+    }
+    #faq-352 .cs-left {
+      /* scaling entire section down. font-size starts at a min in vw, and stops
+                 when that value reaches 1em (16px). Since we want the picture elements to base their
+                 font size on the parent and not the root, we use ems for this entire section  */
+      font-size: min(2.08vw, .791em);
+      width: 42.875em;
+      height: 46.875em;
+      position: relative;
+      z-index: 1;
+    }
+    #faq-352 .cs-left:before {
+      /* orange circle */
+      content: '';
+      width: 7.5em;
+      height: 7.5em;
+      border-radius: 50%;
+      background: var(--primaryLight);
+      opacity: 1;
+      position: absolute;
+      display: block;
+      top: 3.125em;
+      right: 18.75em;
+      z-index: -1;
+      animation-name: floatAnimation2;
+      animation-duration: 6s;
+      animation-timing-function: ease-in-out;
+      animation-fill-mode: forwards;
+      animation-iteration-count: infinite;
+    }
+    #faq-352 .cs-left:after {
+      /* orange circle */
+      content: '';
+      width: 9.375em;
+      height: 9.375em;
+      border-radius: 50%;
+      background: var(--primaryLight);
+      opacity: 1;
+      position: absolute;
+      display: block;
+      top: 1.25em;
+      right: 11.875em;
+      z-index: -1;
+      animation-name: floatAnimation2;
+      animation-duration: 10s;
+      animation-timing-function: ease-in-out;
+      animation-fill-mode: forwards;
+      animation-iteration-count: infinite;
+    }
+    @keyframes floatAnimation {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-2em);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+    @keyframes floatAnimation2 {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-1em);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+    #faq-352 .cs-picture {
+      border-radius: 50%;
+      border: clamp(6px, 1.2vw, 12px) solid #ffffff;
+      /* clips the img tag corners */
+      overflow: hidden;
+      position: absolute;
+      display: block;
+    }
+    #faq-352 .cs-picture img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+    #faq-352 .cs-picture1 {
+      width: 12.5em;
+      height: 12.5em;
+      top: 4.5625em;
+      left: -0.75em;
+      animation-name: floatAnimation;
+      animation-duration: 18s;
+      animation-delay: 1s;
+      animation-timing-function: ease-in-out;
+      animation-fill-mode: forwards;
+      animation-iteration-count: infinite;
+    }
+    #faq-352 .cs-picture2 {
+      width: 25em;
+      height: 25em;
+      top: 3.625em;
+      right: -0.75em;
+    }
+    #faq-352 .cs-picture3 {
+      width: 18.75em;
+      height: 18.75em;
+      bottom: 5.625em;
+      left: -0.75em;
+      animation-name: floatAnimation;
+      animation-duration: 16s;
+      animation-delay: 2s;
+      animation-timing-function: ease-in-out;
+      animation-fill-mode: forwards;
+      animation-iteration-count: infinite;
+    }
+    #faq-352 .cs-picture4 {
+      width: 12.5em;
+      height: 12.5em;
+      bottom: -0.75em;
+      right: 10.3125em;
+      animation-name: floatAnimation;
+      animation-duration: 13s;
+      animation-delay: 1s;
+      animation-timing-function: ease-in-out;
+      animation-fill-mode: forwards;
+      animation-iteration-count: infinite;
+    }
+    #faq-352 .cs-blue {
+      width: 11.125em;
+      height: 8.625em;
+      background-color: var(--secondary);
+      position: absolute;
+      bottom: 0;
+      right: 6.25em;
+      z-index: -1;
+      animation-name: floatAnimation;
+      animation-duration: 13s;
+      animation-delay: 1s;
+      animation-timing-function: ease-in-out;
+      animation-fill-mode: forwards;
+      animation-iteration-count: infinite;
+    }
+    #faq-352 .cs-blue:before {
+      /* blue circle */
+      content: '';
+      width: 9.375em;
+      height: 9.375em;
+      border-radius: 50%;
+      background: var(--secondary);
+      opacity: 1;
+      position: absolute;
+      display: block;
+      bottom: 0em;
+      right: -4.375em;
+      z-index: -1;
+    }
+    #faq-352 .cs-blue:after {
+      /* blue circle */
+      content: '';
+      width: 11.875em;
+      height: 11.875em;
+      border-radius: 50%;
+      background: var(--secondary);
+      opacity: 1;
+      position: absolute;
+      display: block;
+      bottom: 1.875em;
+      left: -2.5em;
+      z-index: -1;
+    }
+  }
+  /* Desktop - 1024px */
+  @media only screen and (min-width: 64rem) {
+    #faq-352 .cs-container {
+      max-width: 80rem;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 3.25rem;
+    }
+    #faq-352 .cs-left {
+      /* reset the scale */
+      font-size: min(1vw, 1em);
+      /* prevents flexbox from squishing it */
+      flex: none;
+      /* sends it to the right */
+      order: 2;
+    }
+    #faq-352 .cs-title,
+    #faq-352 .cs-topper {
+      text-align: left;
+      width: 80%;
+      margin-left: 0;
+    }
+  }
+               
+  /*-- -------------------------- -->
+<---       parade Info         -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #sbs-72 {
+      /* remove the font family so the Stitch inherits the fonts from your global stylesheet */
+      font-family: 'Roboto', 'Arial', sans-serif;
+      padding: var(--sectionPadding);
+      background-color: #fff;
+    }
+    #sbs-72 .cs-container {
+      width: 100%;
+      /* changes to 1280px at tablet */
+      max-width: 34.375rem;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* 48px - 64px */
+      gap: clamp(3rem, 6vw, 4rem);
+    }
+    #sbs-72 .cs-content {
+      /* set text align to left if content needs to be left aligned */
+      text-align: left;
+      width: 100%;
+      max-width: 33.875rem;
+      margin-right: auto;
+      display: flex;
+      flex-direction: column;
+      /* centers content horizontally, set to flex-start to left align */
+      align-items: flex-start;
+    }
+    #sbs-72 .cs-topper {
+      font-size: var(--topperFontSize);
+      line-height: 1.2em;
+      text-transform: uppercase;
+      text-align: inherit;
+      letter-spacing: .1em;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+    #sbs-72 .cs-title {
+      font-size: var(--headerFontSize);
+      font-weight: 900;
+      line-height: 1.2em;
+      text-align: inherit;
+      max-width: 43.75rem;
+      margin: 0 0 1rem 0;
+      color: var(--headerColor);
+      position: relative;
+    }
+    #sbs-72 .cs-text {
+      font-size: var(--bodyFontSize);
+      line-height: 1.5em;
+      text-align: inherit;
+      width: 100%;
+      max-width: 40.625rem;
+      margin: 0;
+      color: var(--bodyTextColor);
+    }
+    #sbs-72 .cs-text {
+      /* Override.  cs-topper cs-title and first cs-text should be removed and put into your global css sheet so it can control every instance of them on your site and is consistent. This selector is a section specific override that stays inside this stitch */
+      margin-bottom: 1rem;
+    }
+    #sbs-72 .cs-text:last-of-type {
+      margin-bottom: 2rem;
+    }
+    #sbs-72 .cs-title {
+      /* Override.  cs-topper cs-title and first cs-text should be removed and put into your global css sheet so it can control every instance of them on your site and is consistent. This selector is a section specific override that stays inside this stitch */
+      color: var(--primaryLight);
+    }
+    #sbs-72 .cs-text {
+      /* Override.  cs-topper cs-title and first cs-text should be removed and put into your global css sheet so it can control every instance of them on your site and is consistent. This selector is a section specific override that stays inside this stitch */
+      color: var(--bodyTextColor);
+      opacity: .8;
+    }
+    #sbs-72 .cs-button-solid {
+      font-size: 1rem;
+      /* 46px - 56px */
+      line-height: clamp(2.875rem, 5.5vw, 3.5rem);
+      text-decoration: none;
+      font-weight: 700;
+      text-align: center;
+      margin: 0;
+      color: #fff;
+      min-width: 9.375rem;
+      padding: 0 1.5rem;
+      background-color: var(--primary);
+      border-radius: 0.25rem;
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+      /* prevents padding from adding to the width */
+      box-sizing: border-box;
+    }
+    #sbs-72 .cs-button-solid:before {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 0%;
+      background: #000;
+      opacity: 1;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      border-radius: 0.25rem;
+      transition: width .3s;
+    }
+    #sbs-72 .cs-button-solid:hover:before {
+      width: 100%;
+    }
+    #sbs-72 .cs-picture {
+      width: 95%;
+      max-width: 34.375rem;
+      margin: 0;
+      position: relative;
+      display: block;
+      /* width divided by height */
+      aspect-ratio: 0.93134328;
+      border-radius: 1rem;
+      z-index: 1;
+    }
+    #sbs-72 .cs-picture:before {
+      /* Top right box */
+      content: '';
+      width: 10rem;
+      /* 202px - 248px */
+      height: clamp(12.625rem, 25vw, 15.5rem);
+      background: var(--primary);
+      opacity: 1;
+      border-radius: 1rem;
+      position: absolute;
+      display: block;
+      /* 16px -20px */
+      /* wrapped in a calc function to get a negative clamp value */
+      top: calc(clamp(.5rem, 2.09vw, 1.25rem) * -1);
+      right: calc(clamp(.5rem, 2.09vw, 1.25rem) * -1);
+    }
+    #sbs-72 .cs-picture:after {
+      /* Bottom left box */
+      content: '';
+      width: 10rem;
+      /* 202px - 248px */
+      height: clamp(12.625rem, 25vw, 15.5rem);
+      background: var(--primary);
+      opacity: 1;
+      border-radius: 1rem;
+      position: absolute;
+      display: block;
+      /* 16px -20px */
+      /* wrapped in a calc function to get a negative clamp value */
+      bottom: calc(clamp(.5rem, 2.09vw, 1.25rem) * -1);
+      left: calc(clamp(.5rem, 2.09vw, 1.25rem) * -1);
+      z-index: -1;
+    }
+    #sbs-72 .cs-picture img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 1rem;
+    }
+  }
+  /* Tablet - 768px */
+  @media only screen and (min-width: 48rem) {
+    #sbs-72 .cs-container {
+      max-width: 80rem;
+      flex-direction: row;
+      justify-content: flex-start;
+      /* 60px - 128px */
+      gap: clamp(3.75rem, 9.5vw, 8rem);
+    }
+    #sbs-72 .cs-picture {
+      /* 328px - 502px */
+      width: clamp(20.5rem, 37.5vw, 31.375rem);
+      /* 440px - 520px */
+      height: clamp(27.5rem, 40vw, 32.5rem);
+      /* 16px - 20px */
+      margin: 0 0 0 clamp(1rem, 5vw, 1.25rem);
+      flex: none;
+    }
+    #sbs-72 .cs-content {
+      width: 45%;
+    }
+  }
+
+  /*-- -------------------------- -->
+<---       Parade Application     -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #sbsr-73 {
+      /* remove the font family so the Stitch inherits the fonts from your global stylesheet */
+      font-family: 'Roboto', 'Arial', sans-serif;
+      padding: var(--sectionPadding);
+      background-color: #fff;
+    }
+    #sbsr-73 .cs-container {
+      width: 100%;
+      /* changes to 1280px at tablet */
+      max-width: 34.375rem;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* 48px - 64px */
+      gap: clamp(3rem, 6vw, 4rem);
+    }
+    #sbsr-73 .cs-content {
+      /* set text align to left if content needs to be left aligned */
+      text-align: left;
+      width: 100%;
+      max-width: 33.875rem;
+      margin-right: auto;
+      display: flex;
+      flex-direction: column;
+      /* centers content horizontally, set to flex-start to left align */
+      align-items: flex-start;
+    }
+    #sbsr-73 .cs-topper {
+      font-size: var(--topperFontSize);
+      line-height: 1.2em;
+      text-transform: uppercase;
+      text-align: inherit;
+      letter-spacing: .1em;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+    #sbsr-73 .cs-title {
+      font-size: var(--headerFontSize);
+      font-weight: 900;
+      line-height: 1.2em;
+      text-align: inherit;
+      max-width: 43.75rem;
+      margin: 0 0 1rem 0;
+      color: var(--headerColor);
+      position: relative;
+    }
+    #sbsr-73 .cs-text {
+      font-size: var(--bodyFontSize);
+      line-height: 1.5em;
+      text-align: inherit;
+      width: 100%;
+      max-width: 40.625rem;
+      margin: 0;
+      color: var(--bodyTextColor);
+    }
+    #sbsr-73 .cs-text {
+      /* Override.  cs-topper cs-title and first cs-text should be removed and put into your global css sheet so it can control every instance of them on your site and is consistent. This selector is a section specific override that stays inside this stitch */
+      margin-bottom: 1rem;
+    }
+    #sbsr-73 .cs-text:last-of-type {
+      margin-bottom: 2rem;
+    }
+    #sbsr-73 .cs-title {
+      /* Override.  cs-topper cs-title and first cs-text should be removed and put into your global css sheet so it can control every instance of them on your site and is consistent. This selector is a section specific override that stays inside this stitch */
+      color: var(--primaryLight);
+    }
+    #sbsr-73 .cs-text {
+      /* Override.  cs-topper cs-title and first cs-text should be removed and put into your global css sheet so it can control every instance of them on your site and is consistent. This selector is a section specific override that stays inside this stitch */
+      color: var(--primary);
+      opacity: .8;
+    }
+    #sbsr-73 .cs-button-solid {
+      font-size: 1rem;
+      /* 46px - 56px */
+      line-height: clamp(2.875rem, 5.5vw, 3.5rem);
+      text-decoration: none;
+      font-weight: 700;
+      text-align: center;
+      margin: 0;
+      color: #fff;
+      min-width: 9.375rem;
+      padding: 0 1.5rem;
+      background-color: var(--primary);
+      border-radius: 0.25rem;
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+      /* prevents padding from adding to the width */
+      box-sizing: border-box;
+    }
+    #sbsr-73 .cs-button-solid:before {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 0%;
+      background: #000;
+      opacity: 1;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      border-radius: 0.25rem;
+      transition: width .3s;
+    }
+    #sbsr-73 .cs-button-solid:hover:before {
+      width: 100%;
+    }
+    #sbsr-73 .cs-picture {
+      width: 95%;
+      max-width: 34.375rem;
+      margin: 0;
+      position: relative;
+      display: block;
+      /* width divided by height */
+      aspect-ratio: 0.93134328;
+      border-radius: 1rem;
+      z-index: 1;
+    }
+    #sbsr-73 .cs-picture:before {
+      /* Top right box */
+      content: '';
+      width: 10rem;
+      /* 202px - 248px */
+      height: clamp(12.625rem, 25vw, 15.5rem);
+      background: var(--primary);
+      opacity: 1;
+      border-radius: 1rem;
+      position: absolute;
+      display: block;
+      /* 16px -20px */
+      /* wrapped in a calc function to get a negative clamp value */
+      top: calc(clamp(.5rem, 2.09vw, 1.25rem) * -1);
+      right: calc(clamp(.5rem, 2.09vw, 1.25rem) * -1);
+    }
+    #sbsr-73 .cs-picture:after {
+      /* Bottom left box */
+      content: '';
+      width: 10rem;
+      /* 202px - 248px */
+      height: clamp(12.625rem, 25vw, 15.5rem);
+      background: var(--primary);
+      opacity: 1;
+      border-radius: 1rem;
+      position: absolute;
+      display: block;
+      /* 16px -20px */
+      /* wrapped in a calc function to get a negative clamp value */
+      bottom: calc(clamp(.5rem, 2.09vw, 1.25rem) * -1);
+      left: calc(clamp(.5rem, 2.09vw, 1.25rem) * -1);
+      z-index: -1;
+    }
+    #sbsr-73 .cs-picture img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 1rem;
+    }
+  }
+  /* Tablet - 768px */
+  @media only screen and (min-width: 48rem) {
+    #sbsr-73 .cs-container {
+      max-width: 80rem;
+      flex-direction: row;
+      justify-content: flex-end;
+      /* 60px - 128px */
+      gap: clamp(3.75rem, 9.5vw, 8rem);
+    }
+    #sbsr-73 .cs-picture {
+      /* 328px - 502px */
+      width: clamp(20.5rem, 37.5vw, 31.375rem);
+      /* 440px - 520px */
+      height: clamp(27.5rem, 40vw, 32.5rem);
+      /* 16px - 20px */
+      margin: 0 0 0 clamp(1rem, 5vw, 1.25rem);
+      flex: none;
+      /* sends it to the right in the 2nd position */
+      order: 2;
+    }
+    #sbsr-73 .cs-content {
+      width: 45%;
+      margin: 0;
+    }
+  }
+                                  
+                                  
+
+/*-- -------------------------- -->
+<---          Footer            -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #cs-footer-840 {
+      /* remove the font family so the Stitch inherits the fonts from your global stylesheet */
+      font-family: 'Roboto', 'Arial', sans-serif;
+      padding: var(--sectionPadding);
+      /* 30px - 50px */
+      padding-bottom: clamp(1.875rem, 5vw, 3.125rem);
+      background-color: #001F3F;
+    }
+    #cs-footer-840 .cs-container {
+      width: 100%;
+      /* reset on tablet */
+      max-width: 34.375rem;
+      margin: auto;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      column-gap: 3rem;
+      row-gap: 2rem;
+    }
+    #cs-footer-840 .cs-logo-group {
+      /* takes up all the space, lets the other ul's wrap below it */
+      width: 100%;
+      position: relative;
+    }
+    #cs-footer-840 .cs-logo {
+      width: 13.125rem;
+      height: auto;
+      margin: 0 0 1.5rem 0;
+      display: block;
+    }
+    #cs-footer-840 .cs-logo-img {
+      width: 100%;
+      height: auto;
+    }
+    #cs-footer-840 .cs-text {
+      font-size: 1rem;
+      line-height: 1.5em;
+      margin: 0 0 1.5rem 0;
+      max-width: 25rem;
+      color: #BABABA;
+    }
+    #cs-footer-840 .cs-social {
+      display: inline-flex;
+      justify-content: flex-start;
+      gap: 0.75em;
+    }
+    #cs-footer-840 .cs-social-link {
+      width: 2rem;
+      height: 2rem;
+      background-color: #484848;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      transition: transform 0.3s, background-color 0.3s;
+    }
+    #cs-footer-840 .cs-social-link:hover {
+      background-color: var(--primary);
+      transform: translateY(-0.1875rem);
+    }
+    #cs-footer-840 .cs-social-link:hover .cs-social-img {
+      filter: grayscale(1) brightness(1000%);
+    }
+    #cs-footer-840 .cs-social-img {
+      height: 0.75rem;
+      width: auto;
+      display: block;
+    }
+    #cs-footer-840 .cs-header {
+      font-size: 1.25rem;
+      line-height: 1.5em;
+      font-weight: 700;
+      margin: 0 0 1.25rem 0;
+      color: var(--bodyTextColorWhite);
+      display: block;
+      position: relative;
+    }
+    #cs-footer-840 .cs-ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    #cs-footer-840 .cs-ul-1 {
+      width: 100%;
+      max-width: 21.875rem;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      column-gap: 2rem;
+    }
+    #cs-footer-840 .cs-ul-1 .cs-li {
+      width: 44%;
+    }
+    #cs-footer-840 .cs-li {
+      list-style: none;
+    }
+    #cs-footer-840 .cs-link {
+      font-size: 1rem;
+      text-decoration: none;
+      line-height: 1.5em;
+      text-align: left;
+      color: #BABABA;
+      display: inline-flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      transition: color .3s;
+    }
+    #cs-footer-840 .cs-link:hover {
+      color: var(--primary);
+    }
+    #cs-footer-840 .cs-icon {
+      width: 1.25rem;
+      height: auto;
+      margin-right: 0.125rem;
+      display: block;
+    }
+    #cs-footer-840 .cs-bottom {
+      text-align: center;
+      width: 100%;
+      max-width: 80rem;
+      /* 48px - 64px */
+      margin: clamp(3rem, 7vw, 4rem) auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid #484848;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+    #cs-footer-840 .cs-credit,
+    #cs-footer-840 .cs-bottom-link,
+    #cs-footer-840 .cs-credit-link {
+      /* 14px - 16px */
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+      line-height: 1.5em;
+      text-decoration: none;
+      width: auto;
+      margin: 0;
+      color: #bababa;
+      display: inline-block;
+      position: relative;
+      transition: color .3s;
+    }
+    #cs-footer-840 .cs-credit {
+      width: 100%;
+    }
+    #cs-footer-840 .cs-credit-link {
+      /* 14px - 16px */
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+      line-height: 1.5em;
+      text-decoration: none;
+      width: auto;
+      margin: 0;
+      color: #bababa;
+      display: inline-block;
+      position: relative;
+    }
+    #cs-footer-840 .cs-credit-link:hover {
+      color: var(--primary);
+    }
+    #cs-footer-840 .cs-bottom-links {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #cs-footer-840 .cs-bottom-link {
+      display: flex;
+      align-items: center;
+    }
+    #cs-footer-840 .cs-bottom-link:hover {
+      color: var(--primary);
+    }
+    #cs-footer-840 .cs-bottom-link:last-of-type:before {
+      /* separator */
+      content: '';
+      width: 1px;
+      height: 0.875rem;
+      margin: 0 0.75rem;
+      background: currentColor;
+      opacity: 1;
+      display: block;
+    }
+  }
+  /* Tablet - 768px */
+  @media only screen and (min-width: 48rem) {
+    #cs-footer-840 .cs-container {
+      max-width: 80rem;
+      /* 48px - 64px */
+      row-gap: clamp(3rem, 7vw, 4rem);
+    }
+    #cs-footer-840 .cs-bottom {
+      justify-content: space-between;
+      flex-wrap: nowrap;
+    }
+    #cs-footer-840 .cs-credit {
+      text-align: left;
+    }
+    #cs-footer-840 .cs-bottom-links {
+      justify-content: flex-end;
+    }
+  }
+  /* Small Desktop - 1024px */
+  @media only screen and (min-width: 64rem) {
+    #cs-footer-840 .cs-container {
+      /* pushes all flex children to the top */
+      align-items: flex-start;
+      justify-content: flex-end;
+      flex-wrap: nowrap;
+    }
+    #cs-footer-840 .cs-logo-group {
+      width: 30%;
+      max-width: 25rem;
+      /* pushes everything to the right of it as far as possible in a flexbox */
+      margin-right: auto;
+    }
+    #cs-footer-840 .cs-text {
+      width: 100%;
+    }
+    #cs-footer-840 .cs-social {
+      flex-direction: row;
+      position: relative;
+      top: auto;
+      right: auto;
+    }
+  }
+
+  /*<-- -------------------------- -->
+<---          Coming Soon         -->
+<--- -------------------------- -*/
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+*, *:before, *:after {
+  /* prevents padding from affecting height and width */
+  box-sizing: border-box;
+}
+.cs-topper {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: var(--topperFontSize);
+  line-height: 1.2em;
+  text-transform: uppercase;
+  text-align: inherit;
+  letter-spacing: .1em;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.cs-title {
+  font-size: var(--headerFontSize);
+  font-weight: 900;
+  line-height: 1.2em;
+  text-align: inherit;
+  max-width: 43.75rem;
+  margin: 0 0 1rem 0;
+  color: var(--headerColor);
+  position: relative;
+}
+
+.cs-text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: var(--bodyFontSize);
+  line-height: 1.5em;
+  text-align: inherit;
+  width: 100%;
+  max-width: 40.625rem;
+  margin: 0;
+  color: var(--bodyTextColor);
+}
+                          
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  @keyframes floatAnimation {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-2rem);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  @keyframes floatAnimation2 {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-3rem);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  #events-1522 {
+    padding: var(--sectionPadding);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+  }
+  #events-1522 .cs-container {
+    width: 100%;
+    /* changes to 1280px at desktop */
+    max-width: 44rem;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* 48px - 64px */
+    gap: clamp(3rem, 6vw, 4rem);
+  }
+  #events-1522 .cs-content {
+    /* set text align to left if content needs to be left aligned */
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* centers content horizontally, set to flex-start to left align */
+    align-items: center;
+  }
+  #events-1522 .cs-title {
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 24ch;
+  }
+  #events-1522 .cs-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* 16px - 20px */
+    gap: clamp(1rem, 3vw, 1.25rem);
+  }
+  #events-1522 .cs-picture {
+    width: 100%;
+    /* 200px - 300px */
+    min-height: clamp(12.5rem, 40vw, 18.75rem);
+    border-radius: 1.5rem;
+    /* clips the corners of the img tags */
+    overflow: hidden;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+  #events-1522 .cs-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  #events-1522 .cs-card-group {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    /* 16px - 20px */
+    gap: clamp(1rem, 3vw, 1.25rem);
+  }
+  #events-1522 .cs-item {
+    list-style: none;
+    border: 1px solid #E8E8E8;
+    background-color: #fff;
+    overflow: hidden;
+    /* 24px - 40px */
+    border-radius: clamp(1.5rem, 4vw, 2.5rem);
+    position: relative;
+    z-index: 1;
+  }
+  #events-1522 .cs-item:before {
+    /* background color overlay for dark mode*/
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+  #events-1522 .cs-item:hover .cs-date {
+    border-color: var(--secondary);
+  }
+  #events-1522 .cs-item:hover .cs-date:before {
+    background-color: var(--secondary);
+  }
+  #events-1522 .cs-link {
+    text-decoration: none;
+    width: 100%;
+    /* 16px - 24px */
+    padding: clamp(1rem, 3vw, 1.5rem);
+    /* prevents padding from affecting height and width */
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* 16px - 24px */
+    gap: clamp(1rem, 3vw, 1.5rem);
+  }
+  #events-1522 .cs-date {
+    font-size: 1rem;
+    line-height: 1.5em;
+    /* 56px - 80px */
+    width: clamp(3.5rem, 7vw, 5rem);
+    height: clamp(3.5rem, 7vw, 5rem);
+    margin: 0;
+    color: var(--headerColor);
+    border: 1px solid #bababa;
+    /* clips the pseudo to remove the corners */
+    overflow: hidden;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+    transition: border-color 0.3s;
+  }
+  #events-1522 .cs-date:before {
+    /* background color */
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: #bababa;
+    opacity: .1;
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: background-color 0.3s;
+  }
+  #events-1522 .cs-date strong {
+    line-height: 1.2em;
+    font-weight: 700;
+    color: #000;
+  }
+  #events-1522 .cs-h3 {
+    /* 20px - 25px */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(1.25rem, 4vw, 1.5625rem);
+    line-height: 1.2em;
+    font-weight: 700;
+    /* 4px - 16px */
+    margin: 0 0 clamp(0.25rem, 1vw, 0.5rem);
+    color: var(--headerColor);
+  }
+  #events-1522 .cs-time {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5em;
+    margin: 0;
+    color: var(--bodyTextColor);
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  #events-1522 .cs-floater-wrapper {
+    width: 100%;
+    max-width: 120rem;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: -1;
+    transform: translateX(-50%);
+  }
+  #events-1522 .cs-floater1 {
+    width: 32.5rem;
+    height: auto;
+    position: absolute;
+    left: 56%;
+    top: -11.25rem;
+    z-index: -1;
+    transform: rotate(-150deg);
+    animation-name: floatAnimation;
+    animation-duration: 5s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+  }
+  #events-1522 .cs-floater2 {
+    width: 44.375rem;
+    height: auto;
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    z-index: -1;
+    transform: translateY(-50%) rotate(-105deg);
+    animation-name: floatAnimation2;
+    animation-duration: 14s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+  }
+}
+/* Small Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+  #events-1522 .cs-container {
+    max-width: 80rem;
+  }
+  #events-1522 .cs-wrapper {
+    flex-direction: row;
+  }
+  #events-1522 .cs-picture {
+    object-fit: none;
+    height: auto;
+    width: 60%;
+  }
+  #events-1522 .cs-card-group {
+    width: 50%;
+    max-width: 33.875rem;
+    /* prevents flexbox from squishing it */
+    flex: none;
+  }
+  #events-1522 .cs-floater1 {
+    top: 0.625rem;
+    left: auto;
+    right: -10.625rem;
+  }
+  #events-1522 .cs-floater2 {
+    top: 9.375rem;
+    right: auto;
+    left: -21.875rem;
+    transform: rotate(-105deg);
+  }
+}
+                                
+                                  
+/*-- -------------------------- -->
+<---           Logos            -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  #logos-572 {
+    /* 60px - 130px */
+    padding: clamp(3.75rem, 8vw, 8.125rem) 1rem;
+    background-color: var(--secondary);
+  }
+  #logos-572 .cs-container {
+    width: 100%;
+    max-width: 80rem;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    /* 48px - 64px */
+    gap: clamp(3rem, 6vw, 4rem);
+  }
+  #logos-572 .cs-logo {
+    width: auto;
+    max-width: 90%;
+    height: auto;
+    margin: 0;
+    display: block;
+  }
+}
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+  #logos-572 .cs-container {
+    justify-content: space-between;
+  }
+  #logos-572 .cs-logo {
+    width: 20%;
+    /* the max width becomes whatever the actual width of the image is */
+    max-width: max-content;
+    height: auto;
+    display: block;
+  }
+}
+                                                          
+                                  
+  
+  /* CUSTOM CSS */
+
+  #hero-492 .custom-text {
+    font-family: 'Playball', cursive;
+    font-weight: 10000;
+  }
+
+  #services-965 .custom-text {
+    font-family: 'Playball', cursive;
+    font-weight: 10000;
+    color:#002868;
+    padding: 0;
+    margin: 0;
+  }
+
+  #services-965 .cs-text2 {
+    font-family: 'Roboto', 'Arial', sans-serif;
+    font-size: var(--bodyFontSize);
+    line-height: 1.5em;
+    text-align: inherit;
+    width: 100%;
+    max-width: 40.625rem;
+    margin: 0;
+    color:#000
+  }
+
+  #services-18 .cs-icon2 {
+    width: 125rem;
+    height: auto;
+    display: block;
+  }
+
+  #services-18 .cs-picture2 {
+    margin-right: 1.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* 60px - 68px */
+    width: clamp(8rem, 16vw, 24.5rem);
+    height: clamp(8rem, 16vw, 24.5rem);
+    /* prevents border from affecting height and width */
+    box-sizing: border-box;
+    /* prevents flexbox from squishing it */
+    flex: none;
+  }
+
+  .video-wrapper {
+    /* Telling the absolute positioned video to 
+    be relative to this element */
+    position: relative;
+  
+    width: 1920px;
+    height: 1080px;
+  
+    /* Will not allow the video to overflow the 
+    container */
+    overflow: hidden;
+  
+    /* Centering the container's content vertically 
+    and horizontally */
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  video {
+    /** Simulationg background-size: cover */
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
