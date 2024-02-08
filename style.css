@@ -4423,3 +4423,8 @@ h1 {
   top:0.7em;
   right:-2.3em;
 }
+
+
+.logos-slide a, .logos-slide a:visited {
+  text-decoration: none;
+}
