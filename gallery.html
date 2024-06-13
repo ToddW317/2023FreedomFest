@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+/*-- -------------------------- -->
+<---          Gallery           -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #gallery-974 {
+      /* remove the font family so the Stitch inherits the fonts from your global stylesheet */
+      font-family: 'Roboto', 'Arial', sans-serif;
+      padding: var(--sectionPadding);
+    }
+    #gallery-974 .cs-container {
+      width: 100%;
+      /* changes to 1280px at desktop */
+      max-width: 34.375rem;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* 48px - 64px */
+      gap: clamp(3rem, 6vw, 4rem);
+      position: relative;
+    }
+    #gallery-974 .cs-content {
+      /* set text align to left if content needs to be left aligned */
+      text-align: center;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      /* centers content horizontally, set to flex-start to left align */
+      align-items: center;
+    }
+    #gallery-974 .cs-topper {
+      font-size: var(--topperFontSize);
+      line-height: 1.2em;
+      text-transform: uppercase;
+      text-align: inherit;
+      letter-spacing: .1em;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+    #gallery-974 .cs-title {
+      font-size: var(--headerFontSize);
+      font-weight: 900;
+      line-height: 1.2em;
+      text-align: inherit;
+      max-width: 43.75rem;
+      margin: 0 0 1rem 0;
+      color: var(--headerColor);
+      position: relative;
+    }
+    #gallery-974 .cs-title {
+      /* Override.  cs-topper cs-title and first cs-text should be removed and put into your global css sheet so it can control every instance of them on your site and is consistent. This selector is a section specific override that stays inside this stitch */
+      margin: 0 0 1.5rem 0;
+    }
+    #gallery-974 .cs-button-group {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      row-gap: 0.5rem;
+      column-gap: 2rem;
+    }
+    #gallery-974 .cs-button {
+      font-size: 1rem;
+      line-height: 1.5em;
+      color: var(--bodyTextColor);
+      background-color: transparent;
+      border: none;
+      transition: color .3s;
+    }
+    #gallery-974 .cs-button:hover {
+      color: var(--primary);
+      cursor: pointer;
+    }
+    #gallery-974 .cs-button.cs-active {
+      color: var(--primary);
+    }
+    #gallery-974 .cs-gallery {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      opacity: 1;
+      visibility: visible;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      transition: transform .7s, opacity .3s, visibility .5s, top .3s, left .3s;
+      /* makes the transfrom scaling orgin the top left corner, dictates the direction by which the scale transforms animate towards */
+      transform-origin: left top;
+    }
+    #gallery-974 .cs-gallery.cs-hidden {
+      /* by using visibility:hidden instead of display:none, we can see the animations from the opacity and transforms, display:none won't render animations. */
+      visibility: hidden;
+      /* prevents the mouse from interacting with it */
+      pointer-events: none;
+      /* hidden galleries have a 0 opacity, and we animate the opacity to 1 when they become active */
+      opacity: 0;
+      /* this top and left value help control the animation, by setting it to position absolute and left 0, the gallery won't fly off screen to the left, it will stop its position to be at the left edge of the .cs-container (left: 0). Same for the bottom:0 value, the gallery won't go past that posiiton when it animates */
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      /* prevents the hidden galleries from overflowing the section, and makes a nice animations to transition to and from */
+      transform: scaleY(0) scaleX(0);
+    }
+    #gallery-974 .cs-gallery.cs-hidden .cs-image {
+      /* when gallery is hidden, add these styles to the cs-image to animate from when cs-hidden is removed from the .cs-gallery */
+      transform: translateY(2.1875rem);
+      opacity: 0;
+    }
+    #gallery-974 .cs-image {
+      width: 50%;
+      aspect-ratio: 1;
+      /* clips the image corners */
+      overflow: hidden;
+      display: block;
+      position: relative;
+      /* when .cs-hidden is removed from the .cs-gallery, reset these values and animate between their hidden styles */
+      transform: translateY(0rem);
+      opacity: 1;
+      transition: opacity .6s, transform .6s;
+    }
+    #gallery-974 .cs-image:nth-of-type(1) {
+      /* the transition delays change at desktop */
+      /* these delays stagger the reveal of each image so they all go one after the other and not all at once */
+      transition-delay: .15s;
+    }
+    #gallery-974 .cs-image:nth-of-type(2) {
+      transition-delay: .3s;
+    }
+    #gallery-974 .cs-image:nth-of-type(3) {
+      transition-delay: .45s;
+    }
+    #gallery-974 .cs-image:nth-of-type(4) {
+      transition-delay: .6s;
+    }
+    #gallery-974 .cs-image:nth-of-type(5) {
+      transition-delay: .75s;
+    }
+    #gallery-974 .cs-image:nth-of-type(6) {
+      transition-delay: .9s;
+    }
+    #gallery-974 .cs-image:nth-of-type(7) {
+      transition-delay: 1.05s;
+    }
+    #gallery-974 .cs-image:nth-of-type(8) {
+      transition-delay: 1.20s;
+    }
+    #gallery-974 .cs-image img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      /* makes it act like a background image */
+      object-fit: cover;
+    }
+  }
+  /* Small Desktop - 1024px */
+  @media only screen and (min-width: 64rem) {
+    #gallery-974 .cs-container {
+      max-width: 80rem;
+    }
+    #gallery-974 .cs-image {
+      width: 25%;
+      height: 25rem;
+    }
+    #gallery-974 .cs-image:nth-of-type(1) {
+      /* these delays stagger the reveal of each image so they all go one after the other and not all at once */
+      transition-delay: .15s;
+    }
+    #gallery-974 .cs-image:nth-of-type(2) {
+      transition-delay: .3s;
+    }
+    #gallery-974 .cs-image:nth-of-type(3) {
+      transition-delay: .45s;
+    }
+    #gallery-974 .cs-image:nth-of-type(4) {
+      transition-delay: .6s;
+    }
+    #gallery-974 .cs-image:nth-of-type(5) {
+      transition-delay: .15s;
+    }
+    #gallery-974 .cs-image:nth-of-type(6) {
+      transition-delay: .3s;
+    }
+    #gallery-974 .cs-image:nth-of-type(7) {
+      transition-delay: .45s;
+    }
+    #gallery-974 .cs-image:nth-of-type(8) {
+      transition-delay: .6s;
+    }
+  }
+    </style>
+</head>
+
+<body>
+
+        <!-- ============================================ -->
+    <!--                 Navigation                   -->
+    <!-- ============================================ -->
+
+    <header id="cs-navigation">
+        <div class="cs-container">
+          <!--Nav Logo-->
+          <a href="index.html" class="cs-logo" aria-label="back to home">
+            <img
+              src="CFF_LOGO_FINALFR-PhotoRoom.png"
+              width="60"
+              height="60"
+              aria-hidden="true"
+              decoding="async"
+            />
+          </a>
+          <!--Navigation List-->
+          <nav class="cs-nav" role="navigation">
+            <!--Mobile Nav Toggle-->
+            <button class="cs-toggle" aria-label="mobile menu toggle">
+              <div class="cs-box" aria-hidden="true">
+                <span class="cs-line cs-line1" aria-hidden="true"></span>
+                <span class="cs-line cs-line2" aria-hidden="true"></span>
+                <span class="cs-line cs-line3" aria-hidden="true"></span>
+              </div>
+            </button>
+            <!-- We need a wrapper div so we can set a fixed height on the cs-ul in case the nav list gets too long from too many dropdowns being opened and needs to have an overflow scroll. This wrapper acts as the background so it can go the full height of the screen and not cut off any overflowing nav items while the cs-ul stops short of the bottom of the screen, which keeps all nav items in view no matter how mnay there are-->
+            <div class="cs-ul-wrapper">
+              <ul id="cs-expanded" class="cs-ul" aria-expanded="false">
+                <li class="cs-li">
+                  <a href="index.html" class="cs-li-link"> Home </a>
+                </li>
+                <li class="cs-li">
+                  <a href="events.html" class="cs-li-link"> Events </a>
+                </li>
+                <li class="cs-li">
+                  <a href="sponsors.html" class="cs-li-link"> Sponsorships </a>
+                </li>
+                 <li class="cs-li">
+                  <a href="donate.html" class="cs-li-link"> Donate </a>
+                </li>
+                 <li class="cs-li">
+                  <a href="vendors.html" class="cs-li-link"> Vendors </a>
+                </li>
+                <li class="cs-li">
+                  <a href="gallery.html" class="cs-li-link cs-active"> Gallery </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <a href="schedule.html" class="cs-button-solid cs-nav-button"
+            >Event Schedule</a
+          >
+        </div>
+      </header>  
+
+    <div class="container">
+        <section id="gallery-974">
+            <div class="cs-container">
+                <div class="cs-content">
+                    <h2 class="cs-title">Some Pictures of All the Fun To Be Had!</h2>
+                    <div class="cs-button-group">
+                        <button class="cs-button" data-filter="one">All</button>
+                        <button class="cs-button" data-filter="two">Parade</button>
+                        <button class="cs-button" data-filter="three">Activities</button>
+                        <button class="cs-button" data-filter="four">Fireworks</button>
+                    </div>
+                </div>
+                <!--Gallery 1-->
+                <div class="cs-gallery" data-category="one">
+                    <!--Picture 1-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/Concert.webp" />
+                        <source media="(min-width: 601px)" srcset="images/Concert.webp" />
+                        <img decoding="async" loading="lazy" src="images/Concert.webp" alt="gallery" width="305"
+                            height="400" />
+                    </picture>
+                    <!--Picture 2-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/Fireworks1.webp" />
+                        <source media="(min-width: 601px)" srcset="images/Fireworks1.webp" />
+                        <img decoding="async" loading="lazy" src="images/Fireworks1.webp" alt="gallery" width="305"
+                            height="400" />
+                    </picture>
+                    <!--Picture 3-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/CadillacBear.webp" />
+                        <source media="(min-width: 601px)" srcset="images/CadillacBear.webp" />
+                        <img decoding="async" loading="lazy" src="images/CadillacBear.webp" alt="gallery" width="305"
+                            height="400" />
+                    </picture>
+                    <!--Picture 4-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/Parade6.webp" />
+                        <source media="(min-width: 601px)" srcset="images/Parade6.webp" />
+                        <img decoding="async" loading="lazy" src="images/Parade6.webp" alt="gallery" width="305"
+                            height="400" />
+                    </picture>
+                    <!--Picture 5-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/Pork2.webp" />
+                        <source media="(min-width: 601px)" srcset="images/Pork2.webp" />
+                        <img decoding="async" loading="lazy" src="images/Pork2.webp" alt="gallery" width="305"
+                            height="400" />
+                    </picture>
+                    <!--Picture 6-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/Vendor3.webp" />
+                        <source media="(min-width: 601px)" srcset="images/Vendor3.webp" />
+                        <img decoding="async" loading="lazy" src="images/Vendor3.webp" alt="gallery" width="305"
+                            height="400" />
+                    </picture>
+                    <!--Picture 7-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/Fireworks8.webp" />
+                        <source media="(min-width: 601px)" srcset="images/Fireworks8.webp" />
+                        <img decoding="async" loading="lazy" src="images/Fireworks8.webp" alt="gallery" width="305"
+                            height="400" />
+                    </picture>
+                    <!--Picture 8-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/Vendor4.webp" />
+                        <source media="(min-width: 601px)" srcset="images/Vendor4.webp" />
+                        <img decoding="async" loading="lazy" src="images/Vendor4.webp" alt="gallery" width="305"
+                            height="400" />
+                    </picture>
+                </div>
+                <!--Gallery 2-->
+                <div class="cs-gallery cs-hidden" data-category="two">
+                    <!--Picture 1-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/Parade1.webp" />
+                        <source media="(min-width: 601px)" srcset="images/Parade1.webp" />
+                        <img decoding="async" src="images/Parade1.webp" alt="gallery" width="305" height="400" />
+                    </picture>
+                    <!--Picture 2-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/Parade2.webp" />
+                        <source media="(min-width: 601px)" srcset="images/Parade2.webp" />
+                        <img decoding="async" src="images/Parade2.webp" alt="gallery" width="305" height="400" />
+                    </picture>
+                    <!--Picture 3-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/Parade3.webp" />
+                        <source media="(min-width: 601px)" srcset="images/Parade3.webp" />
+                        <img decoding="async" src="images/Parade3.webp" alt="gallery" width="305" height="400" />
+                    </picture>
+                    <!--Picture 4-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/Parade5.webp" />
+                        <source media="(min-width: 601px)" srcset="images/Parade5.webp" />
+                        <img decoding="async" src="images/Pork4.webp" alt="gallery" width="305" height="400" />
+                    </picture>
+                    <!--Picture 5-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/Parade6.webp" />
+                        <source media="(min-width: 601px)" srcset="images/Parade6.webp" />
+                        <img decoding="async" src="images/Parade6.webp" alt="gallery" width="305" height="400" />
+                    </picture>
+                    <!--Picture 7-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/parade7.webp" />
+                        <source media="(min-width: 601px)" srcset="images/parade7.webp" />
+                        <img decoding="async" src="images/parade7.webp" alt="gallery" width="305" height="400" />
+                    </picture>
+                </div>
+                <!--Gallery 3-->
+                <div class="cs-gallery cs-hidden" data-category="three">
+                    <!--Picture 1-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/20230705_142809.jpg" />
+                        <source media="(min-width: 601px)" srcset="images/20230705_142809.jpg" />
+                        <img decoding="async" src="images/20230705_142809.jpg" alt="gallery" width="305" height="400" />
+                    </picture>
+                    <!--Picture 2-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/Concert.webp" />
+                        <source media="(min-width: 601px)" srcset="images/Concert.webp" />
+                        <img decoding="async" src="images/Concert.webp" alt="gallery" width="305" height="400" />
+                    </picture>
+                    <!--Picture 3-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/Vendor1.webp" />
+                        <source media="(min-width: 601px)" srcset="images/Vendor1.webp" />
+                        <img decoding="async" src="images/Vendor1.webp" alt="gallery" width="305" height="400" />
+                    </picture>
+                    <!--Picture 4-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/FireRescue.webp" />
+                        <source media="(min-width: 601px)" srcset="images/FireRescue.webp" />
+                        <img decoding="async" src="images/FireRescue.webp" alt="gallery" width="305" height="400" />
+                    </picture>
+                    <!--Picture 5-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/20230705_144349.jpg" />
+                        <source media="(min-width: 601px)" srcset="images/20230705_144349.jpg" />
+                        <img decoding="async" src="images/20230705_144349.jpg" alt="gallery" width="305" height="400" />
+                    </picture>
+                    <!--Picture 6-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/20230705_144138.jpg" />
+                        <source media="(min-width: 601px)" srcset="images/20230705_144138.jpg" />
+                        <img decoding="async" src="images/20230705_144138.jpg" alt="gallery" width="305" height="400" />
+                    </picture>
+                    <!--Picture 7-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/20230705_144257.jpg" />
+                        <source media="(min-width: 601px)" srcset="images/20230705_144257.jpg" />
+                        <img decoding="async" src="images/20230705_144257.jpg" alt="gallery" width="305" height="400" />
+                    </picture>
+                    <!--Picture 8-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/20230705_143540.jpg" />
+                        <source media="(min-width: 601px)" srcset="images/20230705_143540.jpg" />
+                        <img decoding="async" src="images/20230705_143540.jpg" alt="gallery" width="305" height="400" />
+                    </picture>
+                </div>
+                <!--Gallery 4-->
+                <div class="cs-gallery cs-hidden" data-category="four">
+                    <!--Picture 1-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/Fireworks1.webp" />
+                        <source media="(min-width: 601px)" srcset="images/Fireworks1.webp" />
+                        <img decoding="async" src="images/Fireworks1.webp" alt="gallery" width="305" height="400" />
+                    </picture>
+                    <!--Picture 2-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/Fireworks2.webp" />
+                        <source media="(min-width: 601px)" srcset="images/Fireworks2.webp" />
+                        <img decoding="async" src="images/Fireworks2.webp" alt="gallery" width="305" height="400" />
+                    </picture>
+                    <!--Picture 3-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/Fireworks3.webp" />
+                        <source media="(min-width: 601px)" srcset="images/Fireworks3.webp" />
+                        <img decoding="async" src="images/Fireworks3.webp" alt="gallery" width="305" height="400" />
+                    </picture>
+                    <!--Picture 4-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/Fireworks4.webp" />
+                        <source media="(min-width: 601px)" srcset="images/Fireworks4.webp" />
+                        <img decoding="async" src="images/Fireworks4.webp" alt="gallery" width="305" height="400" />
+                    </picture>
+                    <!--Picture 5-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/Fireworks5.webp" />
+                        <source media="(min-width: 601px)" srcset="images/Fireworks5.webp" />
+                        <img decoding="async" src="images/Fireworks5.webp" alt="gallery" width="305" height="400" />
+                    </picture>
+                    <!--Picture 6-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/Fireworks6.webp" />
+                        <source media="(min-width: 601px)" srcset="images/Fireworks6.webp" />
+                        <img decoding="async" src="images/Fireworks6.webp" alt="gallery" width="305" height="400" />
+                    </picture>
+                    <!--Picture 7-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/Fireworks7.webp" />
+                        <source media="(min-width: 601px)" srcset="images/Fireworks7.webp" />
+                        <img decoding="async" src="images/Fireworks7.webp" alt="gallery" width="305" height="400" />
+                    </picture>
+                    <!--Picture 8-->
+                    <picture class="cs-image">
+                        <source media="(max-width: 600px)" srcset="images/Fireworks8.webp" />
+                        <source media="(min-width: 601px)" srcset="images/Fireworks8.webp" />
+                        <img decoding="async" src="images/Fireworks8.webp" alt="gallery" width="305" height="400" />
+                    </picture>
+                </div>
+            </div>
+        </section>
+    </div>
+<script src="script.js"></script>
+</body>
+
+</html>

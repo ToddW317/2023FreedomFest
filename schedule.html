@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <title>Event Schedule</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .event-day {
+            background: #f9f9f9;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .event-day h2 {
+            color: #444;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        .event {
+            margin: 15px 0;
+            padding: 10px;
+            background: #f1f1f1;
+            border-radius: 5px;
+        }
+
+        .event h3 {
+            margin: 0;
+            color: #333;
+        }
+
+        .event p {
+            margin: 5px 0;
+        }
+
+        .event time {
+            font-weight: bold;
+            color: #666;
+        }
+
+        .event-location {
+            color: #007BFF;
+        }
+
+        .event-description {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+            <!-- ============================================ -->
+    <!--                 Navigation                   -->
+    <!-- ============================================ -->
+
+    <header id="cs-navigation">
+        <div class="cs-container">
+          <!--Nav Logo-->
+          <a href="index.html" class="cs-logo" aria-label="back to home">
+            <img
+              src="CFF_LOGO_FINALFR-PhotoRoom.png"
+              width="60"
+              height="60"
+              aria-hidden="true"
+              decoding="async"
+            />
+          </a>
+          <!--Navigation List-->
+          <nav class="cs-nav" role="navigation">
+            <!--Mobile Nav Toggle-->
+            <button class="cs-toggle" aria-label="mobile menu toggle">
+              <div class="cs-box" aria-hidden="true">
+                <span class="cs-line cs-line1" aria-hidden="true"></span>
+                <span class="cs-line cs-line2" aria-hidden="true"></span>
+                <span class="cs-line cs-line3" aria-hidden="true"></span>
+              </div>
+            </button>
+            <!-- We need a wrapper div so we can set a fixed height on the cs-ul in case the nav list gets too long from too many dropdowns being opened and needs to have an overflow scroll. This wrapper acts as the background so it can go the full height of the screen and not cut off any overflowing nav items while the cs-ul stops short of the bottom of the screen, which keeps all nav items in view no matter how mnay there are-->
+            <div class="cs-ul-wrapper">
+              <ul id="cs-expanded" class="cs-ul" aria-expanded="false">
+                <li class="cs-li">
+                  <a href="index.html" class="cs-li-link"> Home </a>
+                </li>
+                <li class="cs-li">
+                  <a href="events.html" class="cs-li-link"> Events </a>
+                </li>
+                <li class="cs-li">
+                  <a href="sponsors.html" class="cs-li-link"> Sponsorships </a>
+                </li>
+                 <li class="cs-li">
+                  <a href="donate.html" class="cs-li-link"> Donate </a>
+                </li>
+                 <li class="cs-li">
+                  <a href="vendors.html" class="cs-li-link"> Vendors </a>
+                </li>
+                <li class="cs-li">
+                  <a href="gallery.html" class="cs-li-link"> Gallery </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <a href="schedule.html" class="cs-button-solid cs-nav-button  cs-active"
+            >Event Schedule</a
+          >
+        </div>
+      </header>
+      
+      <div class="top-banner">
+        <a href="https://cadillacfreedomfestival.breezechms.com/give/online" class="banner-link">Click here to donate! </a>
+      </div>
+      <div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+      </div>
+    <div class="container">
+        <h1 class="cs-title">
+            <span class="custom-text"> Event Schedule </span>
+          </h1>
+
+        <div class="event-day">
+            <h2>Thursday, July 4th</h2>
+
+            <div class="event">
+                <h3>Independence Day Parade</h3>
+                <time>Staging: 11:30 am, Start: 1 pm</time>
+                <p class="event-location">Mitchell, Pine, Chestnut</p>
+                <p class="event-description">Celebrate Independence Day with a parade through downtown to the high school.</p>
+            </div>
+
+            <div class="event">
+                <h3>Kids Community Carnival</h3>
+                <time>3 pm - 5 pm</time>
+                <p class="event-location">Commons - Market</p>
+                <p class="event-description">Join Wexford County 4-H and other community organizations for fun games and prizes.</p>
+            </div>
+
+            <div class="event">
+                <h3>Kids Pizza & Dance Party</h3>
+                <time>5 pm - 7 pm</time>
+                <p class="event-location">Commons - Splash Pad</p>
+                <p class="event-description">The fun continues at the splash pad with a pizza and dance party sponsored by G&D Pizza, Hot Traxx Entertainment, and Wexford County 4-H.</p>
+            </div>
+
+            <div class="event">
+                <h3>UpBeat Cadillac Music Series: Metro Soul Band</h3>
+                <time>7:00 PM</time>
+                <p class="event-location">Rotary Pavilion</p>
+                <p class="event-description">All your authentic Motown Favorites + Funk, Dance, R&B, and Pop Classics.</p>
+            </div>
+
+            <div class="event">
+                <h3>Fire Dept Family Movie Night</h3>
+                <time>Dusk</time>
+                <p class="event-location">Rotary Pavilion</p>
+                <p class="event-description">Enjoy an outdoor movie night hosted by the Cadillac Fire Department.</p>
+            </div>
+        </div>
+
+        <div class="event-day">
+            <h2>Friday, July 5th</h2>
+
+            <div class="event">
+                <h3>Farmers Market</h3>
+                <time>9 am - 3 pm</time>
+                <p class="event-location">Commons - Market</p>
+                <p class="event-description">Cadillac's weekly farmers market highlights local growers, makers, and creators on Tuesdays and Fridays.</p>
+            </div>
+
+            <div class="event">
+                <h3>Makers Market</h3>
+                <time>9 am - 3 pm</time>
+                <p class="event-location">After 26 Depot</p>
+                <p class="event-description">Another weekly market that allows you to shop locally made goods while supporting the After 26 Project.</p>
+            </div>
+
+            <div class="event">
+                <h3>Food Trucks</h3>
+                <time>10 am - Dusk</time>
+                <p class="event-location">Commons - City Park</p>
+                <p class="event-description">All of your favorite local food trucks available throughout the day.</p>
+            </div>
+
+            <div class="event">
+                <h3>GellyBall</h3>
+                <time>10 am - 6 pm</time>
+                <p class="event-location">Next to Rotary Pavilion</p>
+                <p class="event-description">A new take on paintball, GellyBall is a safe and fun shooting game for ages 5 and up!</p>
+            </div>
+
+            <div class="event">
+                <h3>Craft Show</h3>
+                <time>10 am - 6 pm</time>
+                <p class="event-location">Commons - City Park</p>
+                <p class="event-description">Shop til you drop with local vendors, makers, and businesses.</p>
+            </div>
+
+            <div class="event">
+                <h3>Live Music - Amy Petty</h3>
+                <time>12:30 pm - 3 pm</time>
+                <p class="event-location">Rotary Pavilion</p>
+                <p class="event-description">Singer/songwriter with a powerful voice and presence.</p>
+            </div>
+
+            <div class="event">
+                <h3>Live Music - The Lucky Nows</h3>
+                <time>3:30 pm - 6 pm</time>
+                <p class="event-location">Rotary Pavilion</p>
+                <p class="event-description">Dynamic, high-energy Americana folk-rock.</p>
+            </div>
+
+            <div class="event">
+                <h3>Kids & Pet Parade</h3>
+                <time>Staging: 5:30 pm, Start: 6 pm</time>
+                <p class="event-location">Commons - Behind After 26</p>
+                <p class="event-description">Load up the kids and the pets for this mini parade down Lake Street. Costumes are encouraged!
+                    <ul>
+                        <li>Meet in the parking lot behind After 26</li>
+                        <li>The parade will go down Chestnut St. to the Skate Park</li>
+                        <li>Candy is allowed. Gently toss.</li>
+                        <li>Prizes for the best pet costume and most creative pet/owner outfit</li>
+                        <li>Kids can also be in the parade without a pet.</li>
+                    </ul>
+                    Fee is $10 or a donation of cat food, dog food, litter, treats, training pads, pet beds, etc. These items will be donated to the Wexford County Humane Society and Missaukee Humane Society.
+                </p>
+            </div>
+
+            <div class="event">
+                <h3>Classic Car Cruise</h3>
+                <time>Staging: 6:30 pm, Start: 7 pm</time>
+                <p class="event-location">Classic Car Deals, Cadillac</p>
+                <p class="event-description">Get a sneak peek at the Car Show entries as they cruise through Cadillac Friday night.</p>
+            </div>
+
+            <div class="event">
+                <h3>Community Irish Folk Dance</h3>
+                <time>7 pm - 9 pm</time>
+                <p class="event-location">Commons - Market</p>
+                <p class="event-description">Learn how to dance a traditional Irish folk dance for all ages. In between learning, enjoy a performance from the amazing Northern Lights Irish Dancers.</p>
+            </div>
+
+            <div class="event">
+                <h3>Live Music - Flatbed Fords</h3>
+                <time>7 pm - 9 pm</time>
+                <p class="event-location">Rotary Pavilion</p>
+                <p class="event-description">Songs of the Eagles.</p>
+            </div>
+
+            <div class="event">
+                <h3>Fire on the Water Tribute</h3>
+                <time>9 pm</time>
+                <p class="event-location">Rotary Pavilion</p>
+                <p class="event-description">Honoring our military members and veterans with floating bonfires and performance.</p>
+            </div>
+
+            <div class="event">
+                <h3>Drone Show + Music</h3>
+                <time>Dusk</time>
+                <p class="event-description">Watch from Downtown, Listen on 107.9 CDY. Starlight Aerial Productions returns to Cadillac with hundreds of drones synchronizing in the night sky, creating a breathtaking array of lights and formations, depicting symbols of freedom and bravery.</p>
+            </div>
+        </div>
+
+        <div class="event-day">
+            <h2>Saturday, July 6th</h2>
+
+            <div class="event">
+                <h3>Freedom 5K</h3>
+                <time>Registration: 7:30 am, Start: 8:30 am</time>
+                <p class="event-location">Commons - City Park</p>
+                <p class="event-description">This fun 5K follows Lake Street and benefits the Victim Services Unit.</p>
+            </div>
+
+            <div class="event">
+                <h3>Food Trucks</h3>
+                <time>10 am - Dusk</time>
+                <p class="event-location">Commons - City Park</p>
+                <p class="event-description">All of your favorite local food trucks available throughout the day.</p>
+            </div>
+
+            <div class="event">
+                <h3>GellyBall</h3>
+                <time>10 am - 6 pm</time>
+                <p class="event-location">Next to Rotary Pavilion</p>
+                <p class="event-description">A new take on paintball, GellyBall is a safe and fun shooting game for all ages!</p>
+            </div>
+
+            <div class="event">
+                <h3>Craft Show</h3>
+                <time>10 am - 6 pm</time>
+                <p class="event-location">Commons - City Park</p>
+                <p class="event-description">Shop til you drop with local vendors, makers, and businesses.</p>
+            </div>
+
+            <div class="event">
+                <h3>Car & Motorcycle Show</h3>
+                <time>Registration: 9 am - 11 am, Show: 11 am - 4 pm</time>
+                <p class="event-location">Mitchell Street</p>
+                <p class="event-description">Stroll down Mitchell Street with cars and motorcycles lining both sides, featuring a Hot Wheels track, raffle, and your favorite local businesses!</p>
+            </div>
+
+            <div class="event">
+                <h3>Cornhole Tournament</h3>
+                <time>11:00 AM</time>
+                <p class="event-location">Commons - Market</p>
+                <p class="event-description">Classic Cornhole tournament hosted by the American Legion.</p>
+            </div>
+
+            <div class="event">
+                <h3>Live Music: Bob Hausler</h3>
+                <time>12 pm - 2:30 pm</time>
+                <p class="event-location">Rotary Pavilion</p>
+                <p class="event-description">Singer, songwriter, guitarist, and entertainer with a strong foundation in country music.</p>
+            </div>
+
+            <div class="event">
+                <h3>Live Music: North 44</h3>
+                <time>3:30 pm - 6 pm</time>
+                <p class="event-location">Rotary Pavilion</p>
+                <p class="event-description">Four-piece band covering classic rock and R&B style music including originals.</p>
+            </div>
+
+            <div class="event">
+                <h3>Bingo with Oasis FRC</h3>
+                <time>4-8 pm</time>
+                <p class="event-location">Commons - Market</p>
+                <p class="event-description">Join Oasis Family Resource Center for a bingo fundraiser!</p>
+            </div>
+
+            <div class="event">
+                <h3>Live Music: Truck Stop Traffic</h3>
+                <time>7 pm - 9:30 pm</time>
+                <p class="event-location">Rotary Pavilion</p>
+                <p class="event-description">Classic Rock, Irish Pub, Pop.</p>
+            </div>
+
+            <div class="event">
+                <h3>Fireworks + Music</h3>
+                <time>Dusk</time>
+                <p class="event-description">Watch from Downtown, Listen on 107.9 CDY. Wrap up the festival with a dazzling display of fireworks set to music over Lake Cadillac, best viewed from downtown, with music broadcasts at the Rotary Pavilion and on 107.9 CDY!</p>
+            </div>
+        </div>
+
+        <div class="event-day">
+            <h2>Sunday, July 7th</h2>
+
+            <div class="event">
+                <h3>Church in the Park</h3>
+                <time>10:00 AM</time>
+                <p class="event-location">Rotary Pavilion</p>
+                <p class="event-description">Join Emmanuel Lutheran Church for an outdoor service.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!--                   Footer                     -->
+    <!-- ============================================ -->
+
+    <footer id="cs-footer-840">
+        <div class="cs-container">
+          <!-- Logo Group -->
+          <div class="cs-logo-group">
+            <a aria-label="go back to home" class="cs-logo" href="index.html">
+              <img
+                class="cs-logo-img"
+                aria-hidden="true"
+                loading="lazy"
+                decoding="async"
+                src="CFF_LOGO_FINALFR-PhotoRoom.png"
+                alt="logo"
+                width="240"
+                height="32"
+              />
+            </a>
+            <p class="cs-text"></p>
+            <div class="cs-social">
+              <a
+                class="cs-social-link"
+                aria-label="visit facebook profile"
+                href="https://www.facebook.com/CadillacFreedomFestival/"
+              >
+                <img
+                  class="cs-social-img"
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                  src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons%2Fface-grey1.svg"
+                  alt="facebook"
+                  width="11"
+                  height="11"
+                />
+              </a>
+            </div>
+          </div>
+          <!-- Links -->
+          <div class="cs-ul-wrapper">
+            <span class="cs-header">Quick Links</span>
+            <ul class="cs-ul cs-ul-1">
+              <li class="cs-li">
+                <a class="cs-link" href="index.html">Home</a>
+              </li>
+              <li class="cs-li">
+                <a class="cs-link" href="events.html">Events</a>
+              </li>
+              <li class="cs-li">
+                <a class="cs-link" href="sponsors.html">Corporate Sponsors</a>
+              </li> 
+              <li class="cs-li">
+                <a class="cs-link" href="donate.html">Donate</a>
+              </li>
+              <li class="cs-li">
+                <a class="cs-link" href="vendors.html">Vendors</a>
+              </li>
+              <!-- <li class="cs-li">
+                  <a class="cs-link" href="">Contact</a>
+                </li> -->
+            </ul>
+          </div>
+          <div class="cs-ul-wrapper">
+            <!-- Contact Info -->
+            <span class="cs-header">Contact Information</span>
+            <ul class="cs-ul">
+              <li class="cs-li">
+                <!--Make this link go to the google page-->
+                <a class="cs-link" href="" target="_blank">
+                  <img
+                    class="cs-icon"
+                    aria-hidden="true"
+                    loading="lazy"
+                    decoding="async"
+                    src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons%2Fclock-grey.svg"
+                    alt="clock icon"
+                    width="20"
+                    height="20"
+                  />
+                  M-F 8am – 5:30pm
+                </a>
+              </li>
+              <li class="cs-li">
+                <a class="cs-link" href="mailto:freedomfest2024@gmail.com">
+                  <img
+                    class="cs-contact-icon"
+                    aria-hidden="true"
+                    loading="lazy"
+                    decoding="async"
+                    src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons%2Fphone-grey.svg"
+                    alt="phone icon"
+                    width="20"
+                    height="20"
+                  />
+                  freedomfest2024@gmail.com
+                </a>
+              </li>
+              <li class="cs-li">
+                <!--Make this link go to the google page-->
+                <a class="cs-link" href="" target="_blank">
+                  <img
+                    class="cs-icon"
+                    aria-hidden="true"
+                    loading="lazy"
+                    decoding="async"
+                    src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons%2Fpin-grey.svg"
+                    alt="pin icon"
+                    width="20"
+                    height="20"
+                  />
+                  PO BOX 853, Cadillac, MI. 49601
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="cs-bottom">
+          <span class="cs-credit">
+            © Copyright 2024
+            <a
+              href="https://momentumwebdev.com/index.html"
+              class="cs-credit-link"
+              target="_blank"
+              >Momentum Web Design, LLC | MomentumWebDev.com</a
+            >
+          </span>
+        </div>
+      </footer>
+      <script src="script.js"></script>
+    </body>
+  </html>

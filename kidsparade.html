@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Pet Parade Registration</title>
+</head>
+<body>
+  <!-- ============================================ -->
+  <!--                 Navigation                   -->
+  <!-- ============================================ -->
+
+  <header id="cs-navigation">
+    <div class="cs-container">
+      <!--Nav Logo-->
+      <a href="index.html" class="cs-logo" aria-label="back to home">
+        <img src="CFF_LOGO_FINALFR-PhotoRoom.png" width="60" height="60" aria-hidden="true" decoding="async" />
+      </a>
+      <!--Navigation List-->
+      <nav class="cs-nav" role="navigation">
+        <!--Mobile Nav Toggle-->
+        <button class="cs-toggle" aria-label="mobile menu toggle">
+          <div class="cs-box" aria-hidden="true">
+            <span class="cs-line cs-line1" aria-hidden="true"></span>
+            <span class="cs-line cs-line2" aria-hidden="true"></span>
+            <span class="cs-line cs-line3" aria-hidden="true"></span>
+          </div>
+        </button>
+        <!-- We need a wrapper div so we can set a fixed height on the cs-ul in case the nav list gets too long from too many dropdowns being opened and needs to have an overflow scroll. This wrapper acts as the background so it can go the full height of the screen and not cut off any overflowing nav items while the cs-ul stops short of the bottom of the screen, which keeps all nav items in view no matter how mnay there are-->
+        <div class="cs-ul-wrapper">
+          <ul id="cs-expanded" class="cs-ul" aria-expanded="false">
+            <li class="cs-li">
+              <a href="index.html" class="cs-li-link"> Home </a>
+            </li>
+            <li class="cs-li">
+              <a href="events.html" class="cs-li-link cs-active"> Events </a>
+            </li>
+            <li class="cs-li">
+              <a href="sponsors.html" class="cs-li-link"> Sponsorships </a>
+            </li>
+            <li class="cs-li">
+              <a href="donate.html" class="cs-li-link"> Donate </a>
+            </li>
+            <li class="cs-li">
+              <a href="vendors.html" class="cs-li-link"> Vendors </a>
+            </li>
+            <li class="cs-li">
+              <a href="gallery.html" class="cs-li-link "> Gallery </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <a href="schedule.html" class="cs-button-solid cs-nav-button">Event Schedule</a>
+    </div>
+  </header>
+
+  <div class="top-banner">
+    <a href="https://cadillacfreedomfestival.breezechms.com/give/online" class="banner-link">Click here to donate! </a>
+  </div>
+
+  <!-- ============================================ -->
+  <!--            PET Parade Application            -->
+  <!-- ============================================ -->
+
+  <section id="sbsr-73">
+    <div class="cs-container">
+      <picture class="cs-picture">
+        <source media="(max-width: 600px)" srcset="parade/petincostume.jpg" />
+        <source media="(min-width: 601px)" srcset="parade/petincostume.jpg" />
+        <img loading="lazy" decoding="async" src="parade/petincostume.jpg" alt="pet in costume" width="500" height="552" aria-hidden="true" />
+      </picture>
+      <div class="cs-content">
+        <span class="cs-topper">Register for the</span>
+        <h2 class="cs-title">Pet Parade!</h2>
+      </div>
+    </div>
+    <p class="cs-text"></p>
+    <div class="breeze_form_embed" 
+      data-subdomain="cadillacfreedomfestival" 
+      data-address="22e3c7" 
+      data-width="100%" 
+      data-border_width="0" 
+      data-border_color="000000" 
+      data-background_color="ffffff" 
+      data-button_color="92b765">
+    </div>
+    <script src="https://app.breezechms.com/js/form_embed.js"></script>
+    <div class="cs-container">
+      <div class="cs-content">
+        <h3 class="cs-text">
+          Download a printable version of the Pet Parade Application<a href="parade/Pet_Parade_app.pdf" download> HERE.</a>
+        </h3>
+      </div>
+    </div>
+  </section>
+  <iframe id="Parade-Form" src="parade/Pet_Parade_app.pdf" frameborder="0"></iframe>
+
+  <!-- ============================================ -->
+  <!--                   Footer                     -->
+  <!-- ============================================ -->
+
+  <footer id="cs-footer-840">
+    <div class="cs-container">
+      <!-- Logo Group -->
+      <div class="cs-logo-group">
+        <a aria-label="go back to home" class="cs-logo" href="index.html">
+          <img class="cs-logo-img" aria-hidden="true" loading="lazy" decoding="async" src="CFF_LOGO_FINALFR-PhotoRoom.png" alt="logo" width="240" height="32" />
+        </a>
+        <p class="cs-text"></p>
+        <div class="cs-social">
+          <a class="cs-social-link" aria-label="visit facebook profile" href="https://www.facebook.com/CadillacFreedomFestival/">
+            <img class="cs-social-img" aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/face-grey1.svg" alt="facebook" width="11" height="11" />
+          </a>
+        </div>
+      </div>
+      <!-- Links -->
+      <div class="cs-ul-wrapper">
+        <span class="cs-header">Quick Links</span>
+        <ul class="cs-ul cs-ul-1">
+          <li class="cs-li">
+            <a class="cs-link" href="index.html">Home</a>
+          </li>
+          <li class="cs-li">
+            <a class="cs-link" href="events.html">Events</a>
+          </li>
+          <li class="cs-li">
+            <a class="cs-link" href="sponsors.html">Corporate Sponsors</a>
+          </li>
+          <li class="cs-li">
+            <a class="cs-link" href="donate.html">Donate</a>
+          </li>
+          <li class="cs-li">
+            <a class="cs-link" href="vendors.html">Vendors</a>
+          </li>
+        </ul>
+      </div>
+      <div class="cs-ul-wrapper">
+        <!-- Contact Info -->
+        <span class="cs-header">Contact Information</span>
+        <ul class="cs-ul">
+          <li class="cs-li">
+            <a class="cs-link" href="" target="_blank">
+              <img class="cs-icon" aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/clock-grey.svg" alt="clock icon" width="20" height="20" />
+              M-F 8am – 5:30pm
+            </a>
+          </li>
+          <li class="cs-li">
+            <a class="cs-link" href="mailto:freedomfest2024@gmail.com">
+              <img class="cs-contact-icon" aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/phone-grey.svg" alt="phone icon" width="20" height="20" />
+              freedomfest2024@gmail.com
+            </a>
+          </li>
+          <li class="cs-li">
+            <a class="cs-link" href="" target="_blank">
+              <img class="cs-icon" aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/pin-grey.svg" alt="pin icon" width="20" height="20" />
+              PO BOX 853, Cadillac, MI. 49601
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="cs-bottom">
+      <span class="cs-credit">
+        © Copyright 2024
+        <a href="https://momentumwebdev.com/index.html" class="cs-credit-link" target="_blank">Momentum Web Design, LLC | MomentumWebDev.com</a>
+      </span>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
