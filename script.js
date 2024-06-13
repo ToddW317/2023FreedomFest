@@ -1,3 +1,12 @@
+window.addEventListener('load', function() {
+    var path = window.location.pathname;
+    if (!path.endsWith('/') && !path.endsWith('.html')) {
+        window.location.pathname += '.html';
+    }
+});
+
+
+
 // add classes for mobile navigation toggling
 var CSbody = document.querySelector("body");
 const CSnavbarMenu = document.querySelector("#cs-navigation");
@@ -191,12 +200,5 @@ function openMap(evt, cityName) {
 document.addEventListener("DOMContentLoaded", function() {
     // Explicitly open the first tab
     openMap(new Event('click'), 'Location1');
-});
-
-window.addEventListener('load', function() {
-    var path = window.location.pathname;
-    if (!path.endsWith('/') && !path.endsWith('.html')) {
-        window.location.pathname += '.html';
-    }
 });
       
